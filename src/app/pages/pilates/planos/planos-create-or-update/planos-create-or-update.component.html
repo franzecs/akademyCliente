@@ -1,0 +1,63 @@
+<div class="card">
+  <div class="page-top">
+    Detalhes do Plano
+    <a [routerLink]="['/pilates/planos']">
+      <button class=" btn btn-warning btn-xs fa fa-arrow-circle-left pull-right" style="margin-top:2px;margin-right: 2px; padding: 2px;"></button>
+    </a>
+  </div>
+  <div class="card-body">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="detalhes-tab" data-toggle="tab" href="#detalhes" role="tab" aria-controls="detalhes"
+          aria-selected="true">Detalhes</a>
+      </li>
+      <li class="nav-item disabled">
+        <a class="nav-link" id="obs-tab" data-toggle="tab" href="#obs" role="tab" aria-controls="obs" aria-selected="false">Alunos</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+      <div class="row tab-pane fade show active" id="detalhes" role="tabpanel" aria-labelledby="detalhes-tab" style="margin-left: 10px;">
+        <div class="col-xs-12">
+          <form [formGroup]="formulario" (ngSubmit)="onSubmite()" *ngIf="formulario !== undefined">
+            <div class="col-xs-12">
+              <div class="row">
+
+                <div class="col-sm-12 col-md-5">
+                  <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" class="form-control" formControlName="nome" ikUpCase />
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-2">
+                  <div class="form-group">
+                    <label for="valor">valor</label>
+                    <input id="valor" type="number" step=".1" class="form-control" formControlName="valor" ikUpCase />
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input id="descricao" type="text" class="form-control" formControlName="descricao" ikUpCase />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr />
+            <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Salvar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="obs" role="tabpanel" aria-labelledby="obs-tab">
+        teste de tab...
+      </div>
+
+    </div>
+  </div>
+  <modal-message></modal-message>
+</div>

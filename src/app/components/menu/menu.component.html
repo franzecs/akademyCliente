@@ -1,0 +1,9 @@
+<div *ngFor="let menu of menus" style="padding-left: 10px; padding-right: 10px">
+    <a [routerLink]="[menu.url]">  
+  <button class="btn btn-{{menu.button}} btn-lg btn-block fa {{menu.img}} sombra-btn" 
+      type="button">
+      <span> {{menu.titulo}}</span>
+    </button>
+  </a>
+  <hr>
+</div>

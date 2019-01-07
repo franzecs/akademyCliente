@@ -1,0 +1,249 @@
+<div class="card">
+  <div class="page-top sombra">
+    Cadastro de Instrutores
+    <a [routerLink]="['/pilates/instrutores']">
+      <button class=" btn btn-warning btn-xs fa fa-arrow-circle-left pull-right" style="margin-top:2px;margin-right: 2px; padding: 2px;"></button>
+    </a>
+  </div>
+  <div class="card-body">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="cadastro-tab" data-toggle="tab" href="#cadastro" role="tab" aria-controls="cadastro"
+          aria-selected="true">Cadastro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="turmas-tab" data-toggle="tab" href="#turmas" role="tab" aria-controls="turmas"
+          aria-selected="false">Turmas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="alunos-tab" data-toggle="tab" href="#alunos" role="tab" aria-controls="alunos"
+          aria-selected="false">Alunos</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+      <div class="row tab-pane fade show active" id="cadastro" role="tabpanel" aria-labelledby="cadastro-tab">
+
+        <form [formGroup]="formulario" (ngSubmit)="onSubmite()" *ngIf="formulario !== undefined">
+          <div class="col-xl-12 card-flat">
+            <div class="row">
+              <div class="col-xs-12 col-sm-3 text-center">
+                <div *ngIf="user === undefined" class="text-center">
+                  <loading-spinner></loading-spinner>
+                </div>
+                <img [src]="user.url_perfil" class="img-fluid img-thumbnail" style="width: 150px;" *ngIf="user !== undefined" />
+                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ikUpload"
+                  [disabled]="!formulario.value.id">Upload foto</button>
+              </div>
+
+              <div class="col-xs-12 col-md-9">
+                <div class="row">
+                  <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label>Nome</label>
+                      <input type="text" class="form-control" formControlName="nome" ikUpCase />
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label for="roles">Email</label>
+                      <input type="email" class="form-control" formControlName="email" ikLoCase />
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label>Senha</label>
+                      <input type="password" class="form-control" formControlName="senha" ikUpCase />
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-3">
+                    <div class="form-group">
+                      <label for="status" class="control-label">Status</label>
+                      <select class="form-control" id="status" formControlName="ativo">
+                        <option value=true>Ativo</option>
+                        <option value=false>Inativo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <div class="form-group">
+                      <label>Telefone</label>
+                      <input type="text" class="form-control" formControlName="telefone" />
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label>Celular</label>
+                      <input type="text" class="form-control" formControlName="celular" />
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-2">
+                    <div class="form-group">
+                      <label>%</label>
+                      <input type="text" class="form-control" formControlName="comissao" />
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label>CPF</label>
+                      <input type="text" class="form-control" formControlName="cpf" IkMask="999.999.999-99" />
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label>RG</label>
+                      <input type="text" class="form-control" formControlName="rg" />
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label>Data Nascimento</label>
+                      <input type="text" class="form-control" formControlName="dataNascimento" IkMask="99/99/9999" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 card-flat">
+            <div formGroupName="endereco">
+              <div class="row">
+                <div class="col-xs-12 col-md-2">
+                  <div class="form-group">
+                    <label for="cep" class="control-label">CEP</label>
+                    <input type="text" class="form-control" id="cep" (blur)="consultaCEP()" formControlName="cep">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                  <div class="form-group">
+                    <label for="rua" class="control-label">Rua</label>
+                    <input type="text" class="form-control" id="rua" formControlName="logradouro" placeholder="Nome da rua">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-2">
+                  <div class="form-group">
+                    <label for="numero" class="control-label">Número</label>
+                    <input type="text" class="form-control" id="numero" formControlName="numero">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-3">
+                  <div class="form-group">
+                    <label for="complemento" class="control-label">Complemento</label>
+                    <input type="text" class="form-control" id="complemento" formControlName="complemento">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                  <div class="form-group">
+                    <label for="bairro" class="control-label">Bairro</label>
+                    <input type="text" class="form-control" id="bairro" formControlName="bairro">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-2">
+                  <div class="form-group">
+                    <label for="cidade" class="control-label">Cidade</label>
+                    <select class="form-control" id="cidade" formControlName="cidade">
+                      <option *ngFor="let cidade of cidades" [value]="cidade.nome">{{ cidade.nome }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-2">
+                  <div class="form-group">
+                    <label for="estado" class="control-label">Estado</label>
+                    <select class="form-control" id="estado" formControlName="estado">
+                      <option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-10">
+              <div class="form-group">
+                <label>Observação</label>
+                <input type="text" class="form-control" formControlName="obs" />
+              </div>
+            </div>
+            <div class="col-2">
+              <button type="submit" title="Salvar registro" class="btn btn-primary pull-right sombra-btn" [disabled]="!formulario.valid"
+                style="vertical-align: middle; color: black"><strong>Salvar</strong></button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="tab-pane fade" id="turmas" role="tabpanel" aria-labelledby="turmas-tab" *ngIf="turmas !==''">
+
+        <div class="col-xs-12 card-flat">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Horário</th>
+                <th>Qtd Alunos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let turma of turmas">
+                <td class="text-center">{{turma.dia | diaSemana}}</td>
+                <td class="text-center">{{turma.horario}}</td>
+                <td class="text-center">{{turma.alunos.length}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="alunos" role="tabpanel" aria-labelledby="alunos-tab">
+
+        <div class="col-xs-12 card-flat">
+          <table class="table table-striped table-bordered" *ngIf="formulario !== undefined">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Vr Plano</th>
+                <th>Vr Instrutor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let aluno of alunos">
+                <td class="text-center">{{aluno.nome}}</td>
+                <td class="text-center">{{aluno.email}}</td>
+                <td class="text-center">{{aluno.plano.valor | currency: 'BRL'}}</td>
+                <td class="text-center">{{aluno.plano.valor*(user.comissao/100) | currency: 'BRL'}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan=3 class="text-center">Valor Total:</td>
+                <td class="text-center">{{comissao*(user.comissao/100)||0 | currency: 'BRL'}}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <ik-upload [id]="id" [basePath]="pathUpload" (urlFileUpload)="receiveUrl($event)"> </ik-upload>
+  <modal-message></modal-message>
+
+</div>
