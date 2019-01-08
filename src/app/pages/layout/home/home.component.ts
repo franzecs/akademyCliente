@@ -64,6 +64,7 @@ export class HomeComponent implements OnInit {
       new OpcaoMenu('Instrutores','fa-product-hunt','success','/pilates/instrutores'),
       new OpcaoMenu('Planos','fa-shopping-cart','info','/pilates/planos'),
       new OpcaoMenu('Turmas','fa-table','warning','/pilates/turmas'),
+      new OpcaoMenu('Horário','fa-clock-o','default','/pilates/listturmas'),
       new OpcaoMenu('Financeiro','fa-usd','danger','/pilates/financeiro')
     ]
   }

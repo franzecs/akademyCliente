@@ -1,0 +1,92 @@
+<div class="card-flat">
+    <div class="page-top shadow-sm">
+        HORÁRIOS PILATES
+      </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>SEGUNDA</strong>
+        </div>
+        <div *ngFor="let turma of segunda">
+          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+          <div *ngFor="let aluno of turma.alunos">
+            - {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>TERÇA</strong>
+        </div>
+        <div *ngFor="let turma of terca">
+          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+          <div *ngFor="let aluno of turma.alunos">
+            {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>QUARTA</strong>
+        </div>
+        <div *ngFor="let turma of quarta">
+          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+          <div *ngFor="let aluno of turma.alunos">
+            {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>QUINTA</strong>
+        </div>
+        <div *ngFor="let turma of quinta">
+          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+          <div *ngFor="let aluno of turma.alunos">
+            {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>SEXTA</strong>
+        </div>
+        <div *ngFor="let turma of sexta">
+          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+          <div *ngFor="let aluno of turma.alunos">
+            {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>SÁBADO</strong>
+        </div>
+        <div *ngFor="let turma of sabado">
+          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+          <div *ngFor="let aluno of turma.alunos">
+            {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

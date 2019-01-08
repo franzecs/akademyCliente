@@ -14,6 +14,7 @@ import { TurmasCreateOrUpdateComponent } from './turmas/turmas-create-or-update/
 import { TurmasListComponent } from './turmas/turmas-list/turmas-list.component';
 import { PlanosListComponent } from './planos/planos-list/planos-list.component';
 import { PlanosCreateOrUpdateComponent } from './planos/planos-create-or-update/planos-create-or-update.component';
+import { ListTurmasComponent } from './turmas/list-turmas/list-turmas.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,7 @@ import { PlanosCreateOrUpdateComponent } from './planos/planos-create-or-update/
       ComponentsModule,
       PilatesRoutingModule
     ],
-    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent, AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent, FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, PlanosListComponent, PlanosCreateOrUpdateComponent],
+    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent, AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent, FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, PlanosListComponent, PlanosCreateOrUpdateComponent, ListTurmasComponent],
     exports: [PilatesComponent]
   
   })

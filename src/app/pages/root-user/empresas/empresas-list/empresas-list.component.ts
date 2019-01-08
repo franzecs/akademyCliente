@@ -14,6 +14,7 @@ import { MsgType } from 'src/app/components';
 export class EmpresasListComponent extends PageList implements OnInit {
   
   empresas = [];
+  id: string;
 
   constructor(
     private dialogService: DialogService,
@@ -50,5 +51,21 @@ export class EmpresasListComponent extends PageList implements OnInit {
           })
         }
       })
+  }
+
+  openModalDelete(id, nome, usuario) {
+    this.id = id
+    this.openModal(`Deseja deletar ${usuario}: ${nome}`, MsgType.DELETE)
+  }
+
+  deletar(evento) {
+    if (evento === true) {
+      this.empresaService.delete(this.id).subscribe((responseApi: ResponseApi) => {
+        this.openModal(`Empresa deletada com sucesso!`, MsgType.SUCCESS)
+        this.getList(this.page, this.count)
+      }, err => {
+        this.openModal(`Falha ao deletar!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+      })
+    }
   }
 }

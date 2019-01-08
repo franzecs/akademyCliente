@@ -40,6 +40,10 @@ export class TurmaService {
     return this.http.get(`${API}/turmas/list/${instrutorId}`); 
   }
 
+  findByDia(dia:string){
+    return this.http.get(`${API}/turmas/dia/${dia}`);
+  }
+
   delete(id:string){
     return this.http.delete(`${API}/turmas/${id}`);
   }

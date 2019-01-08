@@ -35,7 +35,7 @@
               </a>
               <a class="componenteform">
                 <button type="button" class="btn btn-danger fa fa-trash sombra-btn" title="Deletar" data-placement="bottom"
-                  data-target="#modalUtil" (click)="delete(empresa.id)">
+                  data-target="#modalUtil" (click)="openModalDelete(empresa.id, empresa.nome, 'a Empresa')">
                 </button>
               </a>
             </td>
@@ -53,6 +53,6 @@
     </ikPagination>
   </div>
   <modal-message 
-    (onConfirm)="deletar($event)">
+    (onConfirm)="deletar($event)"> 
   </modal-message>
 </div>

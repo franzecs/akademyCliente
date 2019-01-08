@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TurmaService } from 'src/app/services';
-import { PageList, ResponseApi } from 'src/app/shared';
+import { PageList, ResponseApi, Turma, User } from 'src/app/shared';
 import { take } from 'rxjs/operators';
 import { MsgType } from 'src/app/components';
 
@@ -13,7 +13,7 @@ export class TurmasListComponent extends PageList implements OnInit {
   
   turmas = [];
   id: string;
-
+ 
   constructor(
     private turmaService: TurmaService,
   ) {

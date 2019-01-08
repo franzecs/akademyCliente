@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { PilatesComponent } from "./pilates.component";
 import { AlunosCreateOrUpdateComponent, AlunosListComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent,
          PlanosListComponent, PlanosCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent} from ".";
+import { ListTurmasComponent } from "./turmas/list-turmas/list-turmas.component";
 
 const pilatesRoutes = [
     { path:'', component: PilatesComponent,
@@ -19,6 +20,8 @@ const pilatesRoutes = [
             { path:'turmas', component: TurmasListComponent },
             { path:'turmas/:id/add', component: TurmasCreateOrUpdateComponent },
             { path:'turmas/:id/edit', component: TurmasCreateOrUpdateComponent },
+
+            { path:'listturmas', component: ListTurmasComponent },
 
             { path:'planos', component: PlanosListComponent },
             { path:'planos/:id/add', component: PlanosCreateOrUpdateComponent },
