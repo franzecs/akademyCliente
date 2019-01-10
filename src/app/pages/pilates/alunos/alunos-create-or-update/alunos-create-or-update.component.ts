@@ -15,16 +15,16 @@ import { DatePipe } from '@angular/common';
 export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnInit {
 
   user: User;
-  perfis: any[]= []
+  perfis: any[] = [];
   userPerfis = new Array<CheckboxItem>();
-  pathUpload = "/usuarios"
-  endereco: Endereco
-  empresas: Empresa[]
-  empresaUser: EmpresaDTO
-  turmas: Turma[]
-  turmasDB: Turma[]
-  planos:Plano[]
-  frmTurma: FormGroup
+  pathUpload = '/usuarios';
+  endereco: Endereco;
+  empresas: Empresa[];
+  empresaUser: EmpresaDTO;
+  turmas: Turma[];
+  turmasDB: Turma[];
+  planos: Plano[];
+  frmTurma: FormGroup;
   shared: SharedService;
 
   constructor(
@@ -40,7 +40,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
     this.shared = SharedService.getInstance();
 
     this.frmTurma = this.formBuilder.group({
-      turma:[null]
+      turma: [null]
     })
   }
 
@@ -68,7 +68,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
         id: [this.user.id],
         nome: [this.user.nome, [Validators.required, Validators.minLength(3)]],
         email: [this.user.email, [Validators.required, Validators.email]],
-        ativo:[this.user.ativo],
+        ativo: [this.user.ativo],
         senha: [this.user.senha, [Validators.required, Validators.minLength(6)]],
         endereco: this.formBuilder.group({
           cep: [this.user.endereco.cep],
@@ -103,15 +103,15 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
   }
 
   newRecord() {
-    this.listFactory()
+    this.listFactory();
     this.userPerfis = Listas._perfil.map(x => new CheckboxItem(x.cod, x.perfil));
 
-    this.authService.getCurrentUser().subscribe((resposta: any)=>{
-      this.empresaUser = resposta['data'].empresa
-    })
+    this.authService.getCurrentUser().subscribe((resposta: any) => {
+      this.empresaUser = resposta['data'].empresa;
+    });
 
-    this.perfis.push("4")
-    this.perfis.push("5")
+    this.perfis.push('4');
+    this.perfis.push('5');
 
     this.formulario = this.formBuilder.group({
       id: [null],
@@ -141,7 +141,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       obs:[null],
       tipoUser:['Aluno'],
       turmas:[this.turmas],
-      empresa: [this.empresaUser], 
+      empresa: [this.empresaUser],
       url_perfil:['/assets/img/prod.jpg'],
     })
     this.chageCitys()
@@ -149,17 +149,18 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
 
   onSubmite() {
     if (this.formulario.value.id === null) {
-      this.user = this.formulario.value
-      this.user.perfis = this.perfis
-      this.user.empresa = this.empresaUser
-      this.user.dataCadastro = new Date()
-      this.user.dtr = this.formulario.value.dataNascimento 
-      this.user.dataNascimento=null
-      this.save(this.user)
+      this.user = this.formulario.value;
+      this.user.perfis = this.perfis;
+      this.user.empresa = this.empresaUser;
+      this.user.dataCadastro = new Date();
+      this.user.dtr = this.formulario.value.dataNascimento;
+      this.user.dataNascimento=null;
+      console.log(this.user);
+      this.save(this.user);
     } else {
       this.user = this.formulario.value
       this.user.perfis = this.perfis
-      this.user.dtr = this.formulario.value.dataNascimento 
+      this.user.dtr = this.formulario.value.dataNascimento
       this.user.dataNascimento=null
       this.update(this.user)
     }
@@ -175,7 +176,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       }, err => {
         this.openModal(`Falha ao realizar cadastro!! (${err['error']['errors'][0]})`, MsgType.ERROR)
       })
-  } 
+  }
 
   update(user: User) {
     this.usuariosService.createOrUpdate(user).pipe(take(1)).subscribe(() => {
