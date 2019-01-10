@@ -5,6 +5,7 @@ import { PilatesComponent } from "./pilates.component";
 import { AlunosCreateOrUpdateComponent, AlunosListComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent,
          PlanosListComponent, PlanosCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent} from ".";
 import { ListTurmasComponent } from "./turmas/list-turmas/list-turmas.component";
+import { FluxoCaixaListComponent } from "./financeiro/fluxo-caixa-list/fluxo-caixa-list.component";
 
 const pilatesRoutes = [
     { path:'', component: PilatesComponent,
@@ -26,6 +27,8 @@ const pilatesRoutes = [
             { path:'planos', component: PlanosListComponent },
             { path:'planos/:id/add', component: PlanosCreateOrUpdateComponent },
             { path:'planos/:id/edit', component: PlanosCreateOrUpdateComponent },
+
+            { path:'financeiro', component: FluxoCaixaListComponent },
         ]
     },
 ];

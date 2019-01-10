@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TurmaService } from 'src/app/services';
 import { ResponseApi, Turma } from 'src/app/shared';
-import { getMaxListeners } from 'cluster';
 
 @Component({
   selector: 'app-list-turmas',

@@ -141,7 +141,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       obs:[null],
       tipoUser:['Aluno'],
       turmas:[this.turmas],
-      empresa: [this.empresaUser],
+      empresa: [this.empresaUser], 
       url_perfil:['/assets/img/prod.jpg'],
     })
     this.chageCitys()
