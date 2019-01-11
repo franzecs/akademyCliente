@@ -141,7 +141,7 @@ export class InstrutoresCreateOrUpdateComponent extends CreateOrUpdate implement
       celular: [null],
       rg: [null],
       cpf: [null],
-      dataNascimento: [null],
+      dataNascimento: [new DatePipe('pt-BR').transform(new Date(),'dd/MM/yyyy')],
       dataCadastro: [null],
       sexo: [null],
       peso: [null],
@@ -165,7 +165,7 @@ export class InstrutoresCreateOrUpdateComponent extends CreateOrUpdate implement
       this.user.dataCadastro = new Date()
       this.user.dtr = this.formulario.value.dataNascimento
       this.user.dataNascimento = null
-      this.save(this.user)
+      this.testEmail(this.user)
     } else {
       this.user = this.formulario.value
       this.user.perfis = this.perfis
@@ -234,5 +234,16 @@ export class InstrutoresCreateOrUpdateComponent extends CreateOrUpdate implement
 
   testPlano(plano1: Plano, plano2: Plano) {
     return plano1 && plano2 ? (plano1.nome === plano2.nome && plano1.id === plano2.id) : plano1 === plano2
+  }
+
+  testEmail(usuario: User){
+    this.authService.currentUser(usuario.email).subscribe((resposta: any) => {
+      if(resposta['data'].email != usuario.email){
+          this.save(usuario);
+      }else{
+        this.openModal('Email já utilizado!', MsgType.ERROR)
+        document.getElementById('email').focus()
+      }
+    });
   }
 }

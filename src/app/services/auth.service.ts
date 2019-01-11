@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { API } from "../config/api";
-import { CredenciaisDTO, LocalUser } from "../shared";
+import { CredenciaisDTO, LocalUser, ResponseApi } from "../shared";
 import { StorageService } from "./storage.service";
 
 
@@ -14,6 +14,7 @@ import { StorageService } from "./storage.service";
 export class AuthService {
 
     jwtHelper: JwtHelperService = new JwtHelperService();
+    resposta: boolean;
 
     constructor(
         public http: HttpClient,
@@ -47,7 +48,7 @@ export class AuthService {
     getEmail(){
         return this.storage.getLocalUser().email
     }
-
+    
     successfulLogin(authorizationValue: string) {
         let tok = authorizationValue.substring(7);
         const decodedToken = this.jwtHelper.decodeToken(tok).sub;

@@ -132,7 +132,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       celular:[null],
       rg:[null],
       cpf:[null],
-      dataNascimento:[null],
+      dataNascimento:[new DatePipe('pt-BR').transform(new Date(),'dd/MM/yyyy')],
       dataCadastro:[null],
       sexo:[null],
       peso:[null],
@@ -155,8 +155,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       this.user.dataCadastro = new Date();
       this.user.dtr = this.formulario.value.dataNascimento;
       this.user.dataNascimento=null;
-      console.log(this.user);
-      this.save(this.user);
+      this.testEmail(this.user);
     } else {
       this.user = this.formulario.value
       this.user.perfis = this.perfis
@@ -174,7 +173,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
         this.openModal("Cadastro realizado com sucesso!!", MsgType.SUCCESS)
         this.resetForm()
       }, err => {
-        this.openModal(`Falha ao realizar cadastro!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+        this.openModal(`Falha ao realizar cadastro!! (${err.error.errors[0]})`, MsgType.ERROR)
       })
   }
 
@@ -202,7 +201,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       this.findById(this.id);
       this.openModal("Upload ok", MsgType.SUCCESS)
     }, err => {
-      this.openModal(`Falha no upload!!(${err['error']['errors'][0]})`, MsgType.ERROR)
+      this.openModal(`Falha no upload!!(${err.error.errors[0]})`, MsgType.ERROR)
     })
   }
 
@@ -232,5 +231,16 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
 
   testPlano(plano1: Plano, plano2: Plano) {
     return plano1 && plano2 ? (plano1.nome === plano2.nome && plano1.id === plano2.id) : plano1 === plano2
+  }
+
+  testEmail(usuario: User){
+    this.authService.currentUser(usuario.email).subscribe((resposta: any) => {
+      if(resposta['data'].email != usuario.email){
+          this.save(usuario);
+      }else{
+        this.openModal('Email já utilizado!', MsgType.ERROR)
+        document.getElementById('email').focus()
+      }
+    });
   }
 }
