@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService, UserService } from 'src/app/services';
-import { PageList, ResponseApi } from 'src/app/shared';
-import { MsgType } from 'src/app/components';
+import { DialogService, UserService, SharedService } from '../../../../services';
+import { PageList, ResponseApi } from '../../../../shared';
+import { MsgType } from '../../../../components';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -13,11 +13,13 @@ export class AlunosListComponent extends PageList implements OnInit {
 
   usuarios = [];
   id: string;
+  shared: SharedService;
 
   constructor(
     private usuariosService: UserService,
   ) {
     super()
+    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
@@ -25,7 +27,7 @@ export class AlunosListComponent extends PageList implements OnInit {
   }
 
   getList(page: number, count: number) {
-    this.usuariosService.findAllByTipo(page, count, 'Aluno').pipe(take(1))
+    this.usuariosService.findAllByTipoNome(page, count, 'Aluno', this.search).pipe(take(1))
       .subscribe((responseApi: ResponseApi) => {
         this.usuarios = responseApi['data']['content'];
         this.pages = new Array(responseApi['data']['totalPages'])
@@ -62,5 +64,10 @@ export class AlunosListComponent extends PageList implements OnInit {
         this.openModal(`erro ao modificar status: (${err['error']['errors'][0]})`, MsgType.ERROR)
       });
     }
+  }
+
+  baixarPlanilha(){
+    var tabela = "<table>" + document.getElementById("tablebx").innerHTML + "</table>";
+    this.shared.salvarPlanilha(tabela,"Alunos");
   }
 }

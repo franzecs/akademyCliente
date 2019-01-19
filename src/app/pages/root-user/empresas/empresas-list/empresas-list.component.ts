@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { ResponseApi, PageList } from 'src/app/shared';
-import { EmpresaService, DialogService } from 'src/app/services';
-import { MsgType } from 'src/app/components';
+import { ResponseApi, PageList } from '../../../../shared';
+import { EmpresaService, DialogService } from '../../../../services';
+import { MsgType } from '../../../../components';
 
 @Component({
   selector: 'app-empresas-list',

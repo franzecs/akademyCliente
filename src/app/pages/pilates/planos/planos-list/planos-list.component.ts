@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PageList, ResponseApi } from 'src/app/shared';
-import { DialogService, PlanoService } from 'src/app/services';
+import { PageList, ResponseApi } from '../../../../shared';
+import { DialogService, PlanoService } from '../../../../services';
 import { take } from 'rxjs/operators';
-import { MsgType } from 'src/app/components';
+import { MsgType } from '../../../../components';
 
 @Component({
   selector: 'app-planos-list',

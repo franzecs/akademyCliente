@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateOrUpdate, User, Endereco, Empresa, Turma, Plano, ResponseApi, Listas, EmpresaDTO } from 'src/app/shared';
-import { CheckboxItem, MsgType } from 'src/app/components';
+import { CreateOrUpdate, User, Endereco, Empresa, Turma, Plano, ResponseApi, Listas, EmpresaDTO } from '../../../../shared';
+import { CheckboxItem, MsgType } from '../../../../components';
 import { FormGroup, FormBuilder, Validators } from '@Angular/forms';
-import { SharedService, UserService, EmpresaService, PlanoService, TurmaService, ConsultaCepService, AuthService } from 'src/app/services';
+import { SharedService, UserService, EmpresaService, PlanoService, TurmaService, ConsultaCepService, AuthService } from '../../../../services';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
@@ -23,6 +23,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
   empresaUser: EmpresaDTO;
   turmas: Turma[];
   turmasDB: Turma[];
+  idade: number = 0;
   planos: Plano[];
   frmTurma: FormGroup;
   shared: SharedService;
@@ -48,6 +49,9 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
     this.usuariosService.findById(id).pipe(take(1)).subscribe((responseApi: ResponseApi) => {
       this.user = responseApi.data;
       this.turmas = this.user.turmas;
+      
+      this.idade = new Date().getFullYear() - new Date(this.user.dataNascimento).getFullYear()
+
       this.cepService.getCidadeNome(this.user.endereco.cidade).subscribe(dados => this.cidades = dados)
       this.userPerfis = Listas._perfil.map(x => {
         if (this.user.perfis.includes(x.perfil)) {
@@ -116,7 +120,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
     this.formulario = this.formBuilder.group({
       id: [null],
       nome: [null, [Validators.required, Validators.minLength(3)]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [this.shared.emailFactory(), [Validators.required, Validators.email]],
       ativo:[true],
       senha: ['123456', [Validators.required, Validators.minLength(6)]],
       endereco: this.formBuilder.group({

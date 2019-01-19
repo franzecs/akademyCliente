@@ -1,10 +1,13 @@
 <div class="card-flat">
-    <div class="page-top shadow-sm">
-        HORÁRIOS PILATES
-      </div>
-  <div class="row">
+  <div class="page-top shadow-sm">
+    HORÁRIOS PILATES
+    <button class="btn btn-warning fa fa-print pull-right sombra-btn" kendo-button (click)="pdf.saveAs('invoice.pdf')" 
+            style="font-size: 14px; margin: 1px" title="imprimir"></button>
+  </div>
+  <kendo-pdf-export #pdf paperSize="A4" margin="0,5cm">
+  <div class="row" id="my-table-p1">
     <div class="col-4">
-      <div class="card-flat">
+      <div  class="card-flat">
         <div class="text-center" style="background: lightgray">
           <strong>SEGUNDA</strong>
         </div>
@@ -45,6 +48,7 @@
         </div>
       </div>
     </div>
+  
     <div class="col-4">
       <div class="card-flat">
         <div class="text-center" style="background: lightgray">
@@ -87,6 +91,7 @@
         </div>
       </div>
     </div>
-
   </div>
+</kendo-pdf-export>
+  
 </div>

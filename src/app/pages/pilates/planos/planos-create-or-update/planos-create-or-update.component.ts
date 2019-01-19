@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@Angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { CreateOrUpdate, Plano, ResponseApi } from 'src/app/shared';
-import { PlanoService } from 'src/app/services';
-import { MsgType } from 'src/app/components';
+import { CreateOrUpdate, Plano, ResponseApi } from '../../../../shared';
+import { PlanoService } from '../../../../services';
+import { MsgType } from '../../../../components';
 
 @Component({
   selector: 'app-planos-create-or-update',

@@ -24,6 +24,11 @@ export class TurmaService {
     return this.http.get(`${API}/turmas`);
   }
 
+  findAllDia(dia:string){
+    console.log('service',dia)
+    return this.http.get(`${API}/turmas/horario/${dia}`);
+  }
+
   findAllPage(page: number, count: number){
     return this.http.get(`${API}/turmas/${page}/${count}`);
   }

@@ -5,9 +5,11 @@ export abstract class PageList {
 
   @ViewChild(ModalMessage) modalMsg: ModalMessage
   page: number = 0;
-  count: number = 2;
+  count: number = 5;
+  counts:number[] = [2,5,10,20,50];
   pages: Array<number>;
   totalElements: number;
+  search: string = '';
 
   constructor() { }
 

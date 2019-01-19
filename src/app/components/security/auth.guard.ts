@@ -2,7 +2,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { SharedService, StorageService } from "../../services";
-import { API } from "src/app/config/api";
+import { API } from "../../config/api";
 
 @Injectable({
     providedIn: 'root'

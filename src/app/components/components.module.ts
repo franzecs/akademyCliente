@@ -15,7 +15,7 @@ import { IkMaskDirective } from './directives/ik-mask.directive';
 import { LoginComponent } from './security/login/login.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { UploadComponent } from './upload/upload.component';
-import { DiaSemana } from './pipes/diaSemana.pipes';
+import { DiaSemana } from './pipes/diaSemana.pipes'; 
 
 @NgModule({
   imports: [

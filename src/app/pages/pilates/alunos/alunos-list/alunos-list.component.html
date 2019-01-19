@@ -1,74 +1,86 @@
 <div class="card">
-  
+
   <div class="page-top shadow-sm">
-    Alunos Cadastrados
-    <a [routerLink]="['0','add']">
-      <button class=" btn btn-primary btn-xs fa fa-plus-circle pull-right" 
-        style="margin-top:2px;margin-right: 2px; padding: 2px;"></button>
-    </a>  
+    <div class="row btn-toolbar" role="toolbar">
+      <div class="col-sm-6 text-center">
+        Alunos Cadastrados
+      </div>
+      <div class="input-group col-sm-4" role="group" style="margin-top: 2px;">
+        <select class="form-control search-input" id="status" [(ngModel)]="count" (change)="ngOnInit()">
+          <option *ngFor="let opt of counts" [ngValue]="opt">{{opt}}</option>
+        </select>
+        <input type="text" class="form-control search-bar" id="nomeAluno" [(ngModel)]="search" (keyup)="ngOnInit()"
+          placeholder="Nome Aluno" title="Busca de aluno">
+      </div>
+      <div class="col-sm-2" role="group" style="margin-top: -4px;">
+        <a class="componenteform">
+          <button class="btn btn-success btn-xs sombra-btn text-center fa fa-download" type="button" title="baixar dados"
+            (click)="baixarPlanilha()" style="max-height: 30px; max-width: 30px; font-size: 15px;"></button>
+        </a>
+        <a [routerLink]="['0','add']" class="componenteform">
+          <button class=" btn btn-primary btn-xs sombra-btn fa fa-plus-circle pull-rigth" type="button" style="max-height: 30px; max-width: 30px; font-size: 15px;"></button>
+        </a>
+      </div>
+    </div>
   </div>
+
   <div *ngIf="usuarios === undefined" class="text-center">
     <loading-spinner></loading-spinner>
   </div>
   <div *ngIf="usuarios !== undefined">
-  
-  <div class="card-body">
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Celular</th>
-          <th>Email</th>
-          <th>Opções</th>
-        </tr> 
-      </thead>
-      <tbody>  
-        <tr *ngFor="let usuario of usuarios">
-          <td>{{usuario.nome}}</td> 
-          <td class="text-center">{{usuario.celular}}</td>
-          <td class="text-center">{{usuario.email}}</td>
-          <td class="text-center">
-            <a [routerLink]="[usuario.id, 'edit']" class="componenteform">
-              <button class=" btn btn-primary fa fa-pencil sombra-btn" title="Detalhes" 
-              data-toggle="tooltip" data-placement="bottom"></button>
-            </a>
-            <a class="componenteform">
-              <button type="button" class="btn btn-info fa fa-retweet sombra-btn" 
-                title="Resetar Senha" data-placement="bottom" (click)="resetPassword(usuario.email)">
-              </button>
-            </a>
-            <a class="componenteform" *ngIf="usuario.isAtivo === true">
-              <button type="button" class="btn btn-warning fa fa-level-down sombra-btn" 
-                title="Desabilitar" data-placement="bottom" (click)="isAtivo('false', usuario.id)">
-              </button>
-            </a>
-            <a class="componenteform" *ngIf="usuario.isAtivo === false">
-              <button type="button" class="btn btn-success fa fa-level-up sombra-btn" 
-                title="Habilitar" data-placement="bottom" (click)="isAtivo('true', usuario.id)">
-              </button>
-            </a>
-            <a class="componenteform">
-              <button type="button" class="btn btn-danger fa fa-trash sombra-btn"  
-                title="Deletar" data-placement="bottom" data-target="#modalUtil" (click)="openModalDelete(usuario.id, usuario.nome, 'o Aluno')">
-              </button>
-            </a>
-          </td>
-        </tr>
-      </tbody>  
-    </table>
 
-    <ikPagination 
-      [page]="page" 
-      [count]="count" 
-      [pages]="pages" 
-      [totalElements]="totalElements" 
-      (_pageData)="pagination($event)">
-    </ikPagination>
-    
-    <modal-message
-      (onConfirm)="deletar($event)">
-    </modal-message>
+    <div class="card-body">
+      <table class="table table-striped table-bordered" id="tablebx">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Celular</th>
+            <th>Email</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{usuario.nome}}</td>
+            <td class="text-center">{{usuario.celular}}</td>
+            <td class="text-center">{{usuario.email}}</td>
+            <td class="text-center">
+              <a [routerLink]="[usuario.id, 'edit']" class="componenteform">
+                <button class=" btn btn-primary fa fa-pencil sombra-btn" title="Detalhes" 
+                        data-toggle="tooltip" data-placement="bottom"></button>
+              </a>
+              <a class="componenteform">
+                <button type="button" class="btn btn-info fa fa-retweet sombra-btn" title="Resetar Senha"
+                        data-toggle="tooltip" data-placement="bottom" (click)="resetPassword(usuario.email)">
+                </button>
+              </a>
+              <a class="componenteform" *ngIf="usuario.isAtivo === true">
+                <button type="button" class="btn btn-warning fa fa-level-down sombra-btn" title="Desabilitar"
+                        data-toggle="tooltip" data-placement="bottom" (click)="isAtivo('false', usuario.id)">
+                </button>
+              </a>
+              <a class="componenteform" *ngIf="usuario.isAtivo === false">
+                <button type="button" class="btn btn-success fa fa-level-up sombra-btn" title="Habilitar"
+                        data-toggle="tooltip" data-placement="bottom" (click)="isAtivo('true', usuario.id)">
+                </button>
+              </a>
+              <a class="componenteform">
+                <button type="button" class="btn btn-danger fa fa-trash sombra-btn" title="Deletar" 
+                        data-toggle="tooltip" data-placement="bottom"
+                        data-target="#modalUtil" (click)="openModalDelete(usuario.id, usuario.nome, 'o Aluno')">
+                </button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
+      <ikPagination [page]="page" [count]="count" [pages]="pages" [totalElements]="totalElements" (_pageData)="pagination($event)">
+      </ikPagination>
+
+      <modal-message (onConfirm)="deletar($event)">
+      </modal-message>
+
+    </div>
   </div>
-</div>
 </div>

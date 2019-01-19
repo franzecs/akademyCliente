@@ -21,6 +21,8 @@ import { ComponentsModule } from './components/components.module';
 import { LayoutModule } from './pages/layout/layout.module';
 import { AuthInterceptor } from './components/security/auth.interceptor';
 import { AplicationErrorHandle } from './config/app.error-handle';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { AplicationErrorHandle } from './config/app.error-handle';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    PDFExportModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-Br'},

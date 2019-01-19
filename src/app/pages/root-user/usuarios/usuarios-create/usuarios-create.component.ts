@@ -3,9 +3,9 @@ import { Validators, FormBuilder, FormGroup } from '@Angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { CheckboxItem, MsgType } from 'src/app/components';
-import { User, Endereco, Empresa, Listas, ResponseApi, CreateOrUpdate, Plano, Turma } from 'src/app/shared';
-import { SharedService, UserService, EmpresaService, ConsultaCepService, PlanoService, TurmaService } from 'src/app/services';
+import { CheckboxItem, MsgType } from '../../../../components';
+import { User, Endereco, Empresa, Listas, ResponseApi, CreateOrUpdate, Plano, Turma } from '../../../../shared';
+import { SharedService, UserService, EmpresaService, ConsultaCepService, PlanoService, TurmaService } from '../../../../services';
 import { DatePipe } from '@angular/common';
 
 @Component({

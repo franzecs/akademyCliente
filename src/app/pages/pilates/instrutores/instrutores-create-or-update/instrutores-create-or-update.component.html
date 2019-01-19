@@ -72,13 +72,13 @@
                   <div class="col-xs-12 col-md-3">
                     <div class="form-group">
                       <label>Telefone</label>
-                      <input type="text" class="form-control" formControlName="telefone" />
+                      <input type="text" class="form-control" formControlName="telefone" IkMask="(99) 9999-9999"/>
                     </div>
                   </div>
                   <div class="col-xs-12 col-md-4">
                     <div class="form-group">
                       <label>Celular</label>
-                      <input type="text" class="form-control" formControlName="celular" />
+                      <input type="text" class="form-control" formControlName="celular" IkMask="(99) 99999-9999"/>
                     </div>
                   </div>
                   <div class="col-xs-12 col-md-2">
@@ -127,7 +127,7 @@
                 <div class="col-xs-12 col-md-4">
                   <div class="form-group">
                     <label for="rua" class="control-label">Rua</label>
-                    <input type="text" class="form-control" id="rua" formControlName="logradouro" placeholder="Nome da rua">
+                    <input type="text" class="form-control" id="rua" formControlName="logradouro">
                   </div>
                 </div>
 
@@ -233,7 +233,7 @@
             <tfoot>
               <tr>
                 <td colspan=3 class="text-center">Valor Total:</td>
-                <td class="text-center">{{comissao*(user.comissao/100)||0 | currency: 'BRL'}}</td>
+                <td class="text-center" *ngIf="alunos !== undefined">{{comissao*(user.comissao/100)||0 | currency: 'BRL'}}</td>
               </tr>
             </tfoot>
           </table>

@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpEvent, HttpRequest, HttpHandler } from "@angular/c
 import { SharedService, StorageService } from "../../services";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { API } from "src/app/config/api";
+import { API } from "../../config/api";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
         let localUser = this.storage.getLocalUser();
 
-        let N = API.length;
+        let N = API.length; 
         let requestToAPI = req.url.substring(0, N) == API;
 
         if (localUser && requestToAPI) {

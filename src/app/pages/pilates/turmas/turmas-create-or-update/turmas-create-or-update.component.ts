@@ -3,9 +3,9 @@ import { FormBuilder, Validators } from '@Angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { CreateOrUpdate, User, Turma, ResponseApi } from 'src/app/shared';
-import { TurmaService, UserService } from 'src/app/services';
-import { MsgType } from 'src/app/components';
+import { CreateOrUpdate, User, Turma, ResponseApi } from '../../../../shared';
+import { TurmaService, UserService } from '../../../../services';
+import { MsgType } from '../../../../components';
 
 @Component({
   selector: 'app-turmas-create-or-update',
@@ -27,7 +27,7 @@ export class TurmasCreateOrUpdateComponent extends CreateOrUpdate implements OnI
     super(formBuilder,null,route)
   }
  
-  findById(id: string) {
+  findById(id: string) { 
     this.turmaService.findById(id).pipe(take(1)).subscribe((responseApi: ResponseApi) => {
       this.turma = responseApi.data;
       this.alunos = this.turma.alunos

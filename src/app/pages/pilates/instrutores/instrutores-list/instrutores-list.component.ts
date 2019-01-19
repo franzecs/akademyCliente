@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PageList, ResponseApi } from 'src/app/shared';
-import { DialogService, UserService } from 'src/app/services';
-import { MsgType } from 'src/app/components';
+import { PageList, ResponseApi } from '../../../../shared';
+import { DialogService, UserService } from '../../../../services';
+import { MsgType } from '../../../../components';
 import { take } from 'rxjs/operators';
 
 @Component({

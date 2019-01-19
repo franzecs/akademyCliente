@@ -38,12 +38,12 @@ textarea.ng-invalid.ng-touched {
     border-left: 5px solid #a94442;
 }
 
-input.ng-valid.ng-touched {
+input.ng-valid.ng-touched, .search-bar {
     border: 1px solid green;
     border-left: 5px solid #42A948;
 }
 
-select.ng-valid.ng-touched {
+select.ng-valid.ng-touched, .search-input {
     border: 1px solid green;
     border-left: 5px solid #42A948;
 }
@@ -258,23 +258,37 @@ th, .page-top, .faixa {
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
-.search-bar{
+.btn-opt{
 	margin-top:2px;
-	margin-right: 2px;
-	max-width: 30px;
-	max-height: 30px;
+	margin-right: 2px; 
+	padding: 2px;
+}
+
+.search-bar{
+	margin-top:1px;
+	margin-right: 1px;
+	max-width: 200px;
+	max-height: 28px;
 	font-size: 12px;
 	font-style: italic;
 	color: whitesmoke;
 	border-radius: 30px;
-	background: rgba(0, 0, 0, 0.15);
-	/*background-image: url(assets/img/search.png);*/
+	/*background: rgba(0, 0, 0, 0.15);
+	background-image: url(assets/img/search.png);
 	background-repeat: no-repeat;
 	background-size: contain;
-	background-position: right;
+	background-position: right;*/
 }
 
 .search-bar:focus{
 	max-width: 200px;
 	transition: 0.8s
+}
+
+.search-input{
+	padding: 0; 
+	margin: 1px;
+	height: 28px; 
+	border-radius: 30px;
+	font-size: 10px;
 }

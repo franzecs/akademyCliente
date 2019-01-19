@@ -36,6 +36,10 @@ export class UserService {
     return this.http.get(`${API}/users/search/${page}/${count}/${tipo}`)
   }
 
+  findAllByTipoNome(page: number, count: number, tipo: string, nome: string){
+    return this.http.get(`${API}/users/search/${page}/${count}/${tipo}/${nome}`)
+  }
+
   findListAllByTipo(tipo: string){
     return this.http.get(`${API}/users/search/${tipo}/empresa`)
   }

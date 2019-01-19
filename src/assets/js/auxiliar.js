@@ -31,8 +31,10 @@ $(document).ready(function(){
 })
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-   
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
+$(function () {
   $('.js-atualizar-status').on('click', function(event){
 	  event.preventDefault();
 	  

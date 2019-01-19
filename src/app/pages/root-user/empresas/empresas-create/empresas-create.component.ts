@@ -3,9 +3,9 @@ import { FormBuilder, Validators } from '@Angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { Empresa, ResponseApi, EmpresaDTO, CreateOrUpdate } from 'src/app/shared';
-import { MsgType } from 'src/app/components';
-import { EmpresaService, ConsultaCepService } from 'src/app/services';
+import { Empresa, ResponseApi, EmpresaDTO, CreateOrUpdate } from '../../../../shared';
+import { MsgType } from '../../../../components';
+import { EmpresaService, ConsultaCepService } from '../../../../services';
 
 
 @Component({

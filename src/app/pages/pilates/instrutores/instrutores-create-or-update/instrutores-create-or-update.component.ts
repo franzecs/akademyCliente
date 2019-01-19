@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Endereco, Empresa, Turma, Plano, CreateOrUpdate, ResponseApi, Listas, EmpresaDTO } from 'src/app/shared';
-import { CheckboxItem, MsgType } from 'src/app/components';
+import { User, Endereco, Empresa, Turma, Plano, CreateOrUpdate, ResponseApi, Listas, EmpresaDTO } from '../../../../shared';
+import { CheckboxItem, MsgType } from '../../../../components';
 import { FormGroup, FormBuilder, Validators } from '@Angular/forms';
-import { SharedService, UserService, EmpresaService, TurmaService, ConsultaCepService, AuthService, StorageService } from 'src/app/services';
+import { SharedService, UserService, EmpresaService, TurmaService, ConsultaCepService, AuthService, StorageService } from '../../../../services';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
@@ -125,7 +125,7 @@ export class InstrutoresCreateOrUpdateComponent extends CreateOrUpdate implement
     this.formulario = this.formBuilder.group({
       id: [null],
       nome: [null, [Validators.required, Validators.minLength(3)]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [this.shared.emailFactory(), [Validators.required, Validators.email]],
       ativo: [true],
       senha: ['123456', [Validators.required, Validators.minLength(6)]],
       endereco: this.formBuilder.group({
@@ -151,7 +151,7 @@ export class InstrutoresCreateOrUpdateComponent extends CreateOrUpdate implement
       tipoUser: ['Instrutor'],
       turmas: [this.turmas],
       empresa: [this.empresaUser],
-      comissao: [null],
+      comissao: [0],
       url_perfil: ['/assets/img/prod.jpg'],
     })
     this.chageCitys()

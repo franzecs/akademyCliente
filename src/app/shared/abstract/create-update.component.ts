@@ -1,9 +1,9 @@
 import { ViewChild, OnInit } from "@angular/core";
-import { ModalMessage } from "src/app/components";
+import { ModalMessage } from "../../components";
 import { FormGroup, FormBuilder } from "@Angular/forms";
 import { take, map, switchMap } from "rxjs/operators";
 
-import { ConsultaCepService } from "src/app/services";
+import { ConsultaCepService } from "../../services";
 import { ActivatedRoute, Params } from "@angular/router";
 import { EstadoBr, Cidade, Endereco } from "..";
 import { empty } from "rxjs";

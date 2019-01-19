@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
-import { MsgType } from 'src/app/components';
-import { DialogService, UserService } from 'src/app/services';
-import { PageList, ResponseApi } from 'src/app/shared';
+import { MsgType } from '../../../../components';
+import { DialogService, UserService } from '../../../../services';
+import { PageList, ResponseApi } from '../../../../shared';
 
 @Component({
   selector: 'app-usuarios-list',
