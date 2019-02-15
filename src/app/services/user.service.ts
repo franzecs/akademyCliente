@@ -40,6 +40,10 @@ export class UserService {
     return this.http.get(`${API}/users/search/${page}/${count}/${tipo}/${nome}`)
   }
 
+  findAllByTipoAtivoNome(page: number, count: number, tipo: string, ativo:boolean, nome: string ){
+    return this.http.get(`${API}/users/search/alunos/${page}/${count}/${tipo}/${ativo}/${nome}`)
+  }
+
   findListAllByTipo(tipo: string){
     return this.http.get(`${API}/users/search/${tipo}/empresa`)
   }

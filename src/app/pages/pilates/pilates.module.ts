@@ -15,17 +15,16 @@ import { TurmasListComponent } from './turmas/turmas-list/turmas-list.component'
 import { PlanosListComponent } from './planos/planos-list/planos-list.component';
 import { PlanosCreateOrUpdateComponent } from './planos/planos-create-or-update/planos-create-or-update.component';
 import { ListTurmasComponent } from './turmas/list-turmas/list-turmas.component';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { FrequenciaComponent } from './alunos/frequencia/frequencia.component';
 
 @NgModule({
     imports: [
       ReactiveFormsModule,
       CommonModule,
       ComponentsModule,
-      PDFExportModule,
       PilatesRoutingModule
     ],
-    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent, AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent, FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, PlanosListComponent, PlanosCreateOrUpdateComponent, ListTurmasComponent],
+    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent, AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent, FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, PlanosListComponent, PlanosCreateOrUpdateComponent, ListTurmasComponent, FrequenciaComponent],
     exports: [PilatesComponent]
   
   })

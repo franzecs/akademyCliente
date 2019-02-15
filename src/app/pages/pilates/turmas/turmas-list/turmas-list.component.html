@@ -7,9 +7,7 @@
       </div>
       <div class="col-sm-1">
         <select class="form-control search-input text-center" id="status" [(ngModel)]="count" (change)="ngOnInit()">
-          <option value=2>2</option>
-          <option value=5>5</option>
-          <option value=10>10</option>
+          <option *ngFor="let opt of counts" [ngValue]="opt">{{opt}}</option>
         </select>
       </div>
       <div class="col-sm-3">
@@ -37,6 +35,7 @@
             <th>Dia</th>
             <th>Horário</th>
             <th>Instrutor</th>
+            <th>alunos</th>
             <th>Opções</th>
           </tr>
         </thead>
@@ -45,6 +44,7 @@
             <td class="text-center">{{turma.dia | diaSemana}}</td>
             <td class="text-center">{{turma.horario}}</td>
             <td class="text-center">{{turma.instrutor.nome}}</td>
+            <td class="text-center">{{turma.alunos.length}}</td>
             <td class="text-center">
               <a [routerLink]="[turma.id, 'edit']" class="componenteform">
                 <button class=" btn btn-primary fa fa-pencil sombra-btn" title="Detalhes" data-toggle="tooltip"

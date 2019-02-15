@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { User, Endereco, Empresa, Turma } from '../shared';
 
-import * as kd from './../../assets/js/kendo.all.min.js'
+import * as jsPDF from 'jspdf' 
+import * as html2canvas from 'html2canvas'
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,7 @@ export class SharedService {
     return email + empresa;
   }
 
-  salvarPlanilha(tabela: string, nomeArquivo: string) {
+  saveXls(tabela: string, nomeArquivo: string) {
     var htmlPlanilha = tabela;
     console.log(htmlPlanilha)
     var htmlBase64 = btoa(htmlPlanilha);
@@ -79,20 +80,29 @@ export class SharedService {
     document.body.removeChild(hyperlink);
   }
 
-  pdfMaker() {
-    kd.drawing
-      .drawDOM("#my-table-p1",
-        {
-          forcePageBreak: ".page-break",
-          paperSize: "auto",
-          margin: "1cm",
-          scale: 0.8,
-          height: 500,
-          keepTogether: ".prevent-split"
-        })
-      .then(function (group) {
-        kd.drawing.pdf.saveAs(group, "Exported.pdf")
-      });
+  pdfMaker(html1: any, html2?:any) {
+    var pdf = new jsPDF('p','mm','a4');
+
+    html2canvas(html1).then(canvas =>{
+      var imgWidht = 208;
+      var pageHeight = 295;
+      var imgHeight =  300//canvas.height * imgWidht / canvas.width;
+      var heightLeft = imgHeight;
+
+      const contentDataUrl = canvas.toDataURL('image/png')
+      var position = 0;
+      pdf.addImage(contentDataUrl, 'PNG', 0, position, imgWidht, imgHeight);
+      pdf.addPage()
+
+      html2canvas(html2).then(canvas =>{  
+        const contentDataUrl2 = canvas.toDataURL('image/png')
+        pdf.addPage()
+        pdf.addImage(contentDataUrl2, 'PNG', 0, position, imgWidht, imgHeight);
+        pdf.save('teste.pdf')
+      })
+    })
+
+   
   }
 
 }

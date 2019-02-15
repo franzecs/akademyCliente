@@ -6,6 +6,7 @@ import { AlunosCreateOrUpdateComponent, AlunosListComponent, InstrutoresListComp
          PlanosListComponent, PlanosCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent} from ".";
 import { ListTurmasComponent } from "./turmas/list-turmas/list-turmas.component";
 import { FluxoCaixaListComponent } from "./financeiro/fluxo-caixa-list/fluxo-caixa-list.component";
+import { FrequenciaComponent } from "./alunos/frequencia/frequencia.component";
 
 const pilatesRoutes = [
     { path:'', component: PilatesComponent,
@@ -13,6 +14,7 @@ const pilatesRoutes = [
             { path:'alunos', component: AlunosListComponent },
             { path:'alunos/:id/add', component: AlunosCreateOrUpdateComponent },
             { path:'alunos/:id/edit', component: AlunosCreateOrUpdateComponent},
+            { path:'alunos/frequencia', component: FrequenciaComponent},
 
             { path:'instrutores', component: InstrutoresListComponent },
             { path:'instrutores/:id/add', component: InstrutoresCreateOrUpdateComponent },

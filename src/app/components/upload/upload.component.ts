@@ -15,7 +15,7 @@ export class UploadComponent implements OnInit {
   progress: { percentagem: number } = { percentagem: 0 }
 
   imagem: any
-  preview: any = "../../../assets/img/prod.jpg"
+  preview: any = "../../../assets/img/prod.webp"
  
   @Input() id: string
   @Input() basePath: string
@@ -41,7 +41,7 @@ export class UploadComponent implements OnInit {
     if (file) {
       fileReader.readAsDataURL(file);
     } else {
-      this.imagem= "../../../assets/img/prod.jpg"
+      this.imagem= "../../../assets/img/prod.webp"
     }
   }
  

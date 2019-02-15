@@ -1,18 +1,18 @@
 <div class="card-flat">
   <div class="page-top shadow-sm">
     HORÁRIOS PILATES
-    <button class="btn btn-warning fa fa-print pull-right sombra-btn" kendo-button (click)="pdf.saveAs('invoice.pdf')" 
+    <button class="btn btn-warning fa fa-print pull-right sombra-btn" (click)="makerPdf()" 
             style="font-size: 14px; margin: 1px" title="imprimir"></button>
   </div>
-  <kendo-pdf-export #pdf paperSize="A4" margin="0,5cm">
-  <div class="row" id="my-table-p1">
+  
+    <div class="row" id="my-table-p1">
     <div class="col-4">
       <div  class="card-flat">
         <div class="text-center" style="background: lightgray">
           <strong>SEGUNDA</strong>
         </div>
-        <div *ngFor="let turma of segunda">
-          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+        <div *ngFor="let turma of dias.segunda">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
           <div *ngFor="let aluno of turma.alunos">
             - {{aluno.nome}}
           </div>
@@ -25,10 +25,10 @@
         <div class="text-center" style="background: lightgray">
           <strong>TERÇA</strong>
         </div>
-        <div *ngFor="let turma of terca">
-          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+        <div *ngFor="let turma of dias.terca">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
           <div *ngFor="let aluno of turma.alunos">
-            {{aluno.nome}}
+            - {{aluno.nome}}
           </div>
           <hr />
         </div>
@@ -39,25 +39,26 @@
         <div class="text-center" style="background: lightgray">
           <strong>QUARTA</strong>
         </div>
-        <div *ngFor="let turma of quarta">
-          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+        <div *ngFor="let turma of dias.quarta">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
           <div *ngFor="let aluno of turma.alunos">
-            {{aluno.nome}}
+            - {{aluno.nome}}
           </div>
           <hr />
         </div>
       </div>
     </div>
-  
+  </div>
+  <div class="row" id="my-table-p2">
     <div class="col-4">
       <div class="card-flat">
         <div class="text-center" style="background: lightgray">
           <strong>QUINTA</strong>
         </div>
-        <div *ngFor="let turma of quinta">
-          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+        <div *ngFor="let turma of dias.quinta">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
           <div *ngFor="let aluno of turma.alunos">
-            {{aluno.nome}}
+            - {{aluno.nome}}
           </div>
           <hr />
         </div>
@@ -68,10 +69,10 @@
         <div class="text-center" style="background: lightgray">
           <strong>SEXTA</strong>
         </div>
-        <div *ngFor="let turma of sexta">
-          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+        <div *ngFor="let turma of dias.sexta">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
           <div *ngFor="let aluno of turma.alunos">
-            {{aluno.nome}}
+            - {{aluno.nome}}
           </div>
           <hr />
         </div>
@@ -82,16 +83,98 @@
         <div class="text-center" style="background: lightgray">
           <strong>SÁBADO</strong>
         </div>
-        <div *ngFor="let turma of sabado">
-          <strong>{{turma.horario}}</strong> - {{turma.instrutor.nome}}
+        <div *ngFor="let turma of dias.sabado">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
           <div *ngFor="let aluno of turma.alunos">
-            {{aluno.nome}}
+            - {{aluno.nome}}
           </div>
           <hr />
         </div>
       </div>
     </div>
   </div>
-</kendo-pdf-export>
-  
+   <!--table class="table table-striped table-bordered table-hover table-sm" id="tablebx">
+    <thead>
+      <tr>
+        <th scope="col">Dia</th>
+        <th scope="col">Horário</th>
+        <th scope="col">Instrutor</th>
+        <th scope="col">Alunos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td [attr.rowspan]="dias.segunda.length +1"><b>SEGUNDA</b></td>
+      </tr>
+      <tr *ngFor="let turma of dias.segunda">
+        <td>{{turma.horario}}</td>
+        <td>{{turma.instrutor.nome}}</td>
+        <td>
+          <span *ngFor="let aluno of turma.alunos">
+            -{{aluno.nome}}<br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td [attr.rowspan]="dias.terca.length +1"><b>TERÇA</b></td>
+      </tr>
+      <tr *ngFor="let turma of dias.terca">
+        <td>{{turma.horario}}</td>
+        <td>{{turma.instrutor.nome}}</td>
+        <td>
+          <span *ngFor="let aluno of turma.alunos">
+            -{{aluno.nome}}<br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td [attr.rowspan]="dias.quarta.length +1"><b>QUARTA</b></td>
+      </tr>
+      <tr *ngFor="let turma of dias.quarta">
+        <td>{{turma.horario}}</td>
+        <td>{{turma.instrutor.nome}}</td>
+        <td>
+          <span *ngFor="let aluno of turma.alunos">
+            -{{aluno.nome}}<br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td [attr.rowspan]="dias.quinta.length +1"><b>QUINTA</b></td>
+      </tr>
+      <tr *ngFor="let turma of dias.quinta">
+        <td>{{turma.horario}}</td>
+        <td>{{turma.instrutor.nome}}</td>
+        <td>
+          <span *ngFor="let aluno of turma.alunos">
+            -{{aluno.nome}}<br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td [attr.rowspan]="dias.sexta.length +1"><b>SEXTA</b></td>
+      </tr>
+      <tr *ngFor="let turma of dias.sexta">
+        <td>{{turma.horario}}</td>
+        <td>{{turma.instrutor.nome}}</td>
+        <td>
+          <span *ngFor="let aluno of turma.alunos">
+            -{{aluno.nome}}<br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td [attr.rowspan]="dias.sabado.length +1"><b>SÁBADO</b></td>
+      </tr>
+      <tr *ngFor="let turma of dias.sabado">
+        <td>{{turma.horario}}</td>
+        <td>{{turma.instrutor.nome}}</td>
+        <td>
+          <span *ngFor="let aluno of turma.alunos">
+            -{{aluno.nome}}<br>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table-->
 </div>

@@ -3,6 +3,7 @@ import { PageList, ResponseApi } from '../../../../shared';
 import { DialogService, PlanoService } from '../../../../services';
 import { take } from 'rxjs/operators';
 import { MsgType } from '../../../../components';
+import { RelatorioService } from 'src/app/services/relatorio.service';
 
 @Component({
   selector: 'app-planos-list',
@@ -17,6 +18,7 @@ export class PlanosListComponent extends PageList implements OnInit {
   constructor(
     private dialogService: DialogService,
     private planoService: PlanoService,
+    private relatorioService : RelatorioService
   ) {
     super()
    }
@@ -50,5 +52,13 @@ export class PlanosListComponent extends PageList implements OnInit {
         this.openModal(`Falha ao deletar!! (${err['error']['errors'][0]})`, MsgType.ERROR)
       })
     }
+  }
+
+  relatorio(){
+    this.relatorioService.relPlanos()
+    .then(relatorio =>{
+      const url = window.URL.createObjectURL(relatorio);
+      window.open(url);
+    })
   }
 }

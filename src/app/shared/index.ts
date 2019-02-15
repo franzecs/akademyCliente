@@ -16,4 +16,5 @@ export { Cart } from './models/cart'
 export { CartItem } from './models/cart-item'
 export { Turma } from './models/turma.model'
 export { Plano } from './models/plano.model'
+export { Dias } from './models/dias.model'
 

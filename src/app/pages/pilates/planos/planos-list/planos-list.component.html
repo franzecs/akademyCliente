@@ -2,6 +2,8 @@
 
     <div class="page-top shadow-sm">
       Planos Cadastradas
+      <button class="btn btn-warning fa fa-print pull-right sombra-btn" (click)="relatorio()" style="font-size: 14px; margin: 1px"
+      title="imprimir"></button>
       <a [routerLink]="['0','add']">
         <button class=" btn btn-primary btn-xs fa fa-plus-circle pull-right" style="margin-top:2px;margin-right: 2px; padding: 2px;"></button>
       </a>

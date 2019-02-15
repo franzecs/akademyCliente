@@ -21,8 +21,8 @@ import { ComponentsModule } from './components/components.module';
 import { LayoutModule } from './pages/layout/layout.module';
 import { AuthInterceptor } from './components/security/auth.interceptor';
 import { AplicationErrorHandle } from './config/app.error-handle';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -38,8 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    PDFExportModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production}),
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-Br'},

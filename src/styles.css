@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@charset "utf-8";
 
 html,body{
 	margin:0;
@@ -11,7 +12,7 @@ html,body{
 }
 
 .bg-padrao{
-	background-image: url(assets/img/akademy_bg.jpg);
+	background-image: url(assets/img/akademy_bg.webp);
     background-repeat: no-repeat;
 	background-size: cover;
 	background-position:center;
@@ -20,7 +21,6 @@ html,body{
     top: 0;
     width: 100%;
     height: 100%;
-    /*-webkit-filter: blur(1px);*/
 }
 
 input.ng-invalid.ng-touched {
@@ -76,7 +76,6 @@ label{
     position:relative;
 	transition:all .5s;
     overflow: auto;
-    /*background-image: url(assets/img/page_bg_2.jpg);*/
     background-repeat: no-repeat;
 	background-size: cover;
 	background-position:center;
@@ -84,56 +83,13 @@ label{
 }
 .page-top{
 	font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 5px
-}
-
-.bkpanel{
-   /* background-image: url(assets/img/page_bg_2.jpg);*/
-    background-repeat: no-repeat;
-	background-size: cover;
-	background-position:center;
-	width: 100%;
+  font-weight: bold;
+  border-radius: 5px
 }
 
 .container {
     max-width: 800px;
 }
-
-/***SIDEBAR***/
-.aw-layout-sidebar,.aw-layout-simple-page{background-color:#f6f6f6}
-.aw-layout-sidebar{background: transparent;}
-.aw-layout-sidebar{position:fixed;left:0;top:0;bottom:0;z-index:1000;height:99%;padding-top:65px;margin-left:-211px;border-right:1px solid;border-right-color:transparent;overflow-x:hidden;transition:all .5s}
-.aw-layout-sidebar.is-toggled{margin-left:0}
-
-@media (min-width:992px){.aw-layout-sidebar{margin-left:0}.aw-layout-sidebar.is-toggled{margin-left:-211px}}
-
-.aw-layout-sidebar__content{position:relative;overflow-y:auto;height:99%;width:210px}
-/***SIDEBAR***/
-.aw-layout-page{
-	position: relative;
-	overflow-x: hidden;
-	width: 100%;
-	min-height: 100%;
-	padding-bottom: 60px;
-}
-.aw-layout-content{
-	position: relative;
-	margin: 20px 0 0;
-	transition: all .5s;
-	overflow: auto;
-}
-
-@media (min-width: 992px){
-	.aw-layout-content.is-toggled{
-		margin-left:0
-	}
-	.aw-layout-content{
-		margin-left: 210px;
-		overflow: hidden;
-	}
-}
-
 
 /***TABELA RESPONSIVA -->***/
 .ik-table-col-codigo, .ik-table-col-icons {
@@ -143,16 +99,14 @@ label{
 
 td {
     text-align: justify;
-    font-weight: bold
 }
 
-th, .page-top, .faixa {
+th, tfoot, .page-top, .faixa {
 	text-align: center;
 	color: #fff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
 	background-image: linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
 }
-
 
 @media only screen and (max-width: 760px) , ( min-device-width : 768px)
 	and (max-device-width: 1024px) {
@@ -161,7 +115,7 @@ th, .page-top, .faixa {
 		display: block;
 	}
 
-	/* esconder cabeçalho */
+	/* esconder cabeçalho*/
 	thead tr {
 		position: absolute;
 		top: -9999px;
@@ -221,7 +175,6 @@ th, .page-top, .faixa {
   }
   /** CUSTOM SELECT**/
 
-
 .componenteform{
 	padding: 5px;
 }
@@ -243,6 +196,16 @@ th, .page-top, .faixa {
 
 .card-home {
 	margin-top: 150px;
+}
+
+.card-flat {
+	background-color: #ffffff;
+	padding: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-style: outset;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px 0 rgba(130,130,130,.3), 0 1px 5px 0
+		rgba(130,130,130, 0.19) !important;
 }
 
 .card-transparente, .card-login{
@@ -273,11 +236,6 @@ th, .page-top, .faixa {
 	font-style: italic;
 	color: whitesmoke;
 	border-radius: 30px;
-	/*background: rgba(0, 0, 0, 0.15);
-	background-image: url(assets/img/search.png);
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: right;*/
 }
 
 .search-bar:focus{
@@ -292,3 +250,165 @@ th, .page-top, .faixa {
 	border-radius: 30px;
 	font-size: 10px;
 }
+
+.contentChart {
+	height: 100%;
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+  }
+.spinner {
+	-webkit-animation: rotator 1.4s linear infinite;
+	animation: rotator 1.4s linear infinite;
+  }
+@-webkit-keyframes rotator {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	}
+	100% {
+	  -webkit-transform: rotate(270deg);
+	  transform: rotate(270deg);
+	}
+  }
+@keyframes rotator {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	}
+	100% {
+	  -webkit-transform: rotate(270deg);
+	  transform: rotate(270deg);
+	}
+  }
+.path {
+	stroke-dasharray: 187;
+	stroke-dashoffset: 0;
+	-webkit-transform-origin: center;
+	transform-origin: center;
+	-webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+	animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  }
+@-webkit-keyframes colors {
+	0% {
+	  stroke: #4285F4;
+	}
+	25% {
+	  stroke: #DE3E35;
+	}
+	50% {
+	  stroke: #F7C223;
+	}
+	75% {
+	  stroke: #1B9A59;
+	}
+	100% {
+	  stroke: #4285F4;
+	}
+  }
+@keyframes colors {
+	0% {
+	  stroke: #4285F4;
+	}
+	25% {
+	  stroke: #DE3E35;
+	}
+	50% {
+	  stroke: #F7C223;
+	}
+	75% {
+	  stroke: #1B9A59;
+	}
+	100% {
+	  stroke: #4285F4;
+	}
+  }
+@-webkit-keyframes dash {
+	0% {
+	  stroke-dashoffset: 187;
+	}
+	50% {
+	  stroke-dashoffset: 46.75;
+	  -webkit-transform: rotate(135deg);
+	  transform: rotate(135deg);
+	}
+	100% {
+	  stroke-dashoffset: 187;
+	  -webkit-transform: rotate(450deg);
+	  transform: rotate(450deg);
+	}
+  }
+@keyframes dash {
+	0% {
+	  stroke-dashoffset: 187;
+	}
+	50% {
+	  stroke-dashoffset: 46.75;
+	  -webkit-transform: rotate(135deg);
+	  transform: rotate(135deg);
+	}
+	100% {
+	  stroke-dashoffset: 187;
+	  -webkit-transform: rotate(450deg);
+	  transform: rotate(450deg);
+	}
+	}
+	
+	.loader,
+	.loader:before,
+	.loader:after {
+		border-radius: 50%;
+		width: 10px;
+		height: 10px;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+		-webkit-animation: load7 1.8s infinite ease-in-out;
+		animation: load7 1.8s infinite ease-in-out;
+	}
+	.loader {
+		color: #ff0000;
+		font-size: 5px;
+		margin: 2px auto;
+		margin-left: 20px;
+		position: relative;
+		text-indent: -9999em;
+		-webkit-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-animation-delay: -0.16s;
+		animation-delay: -0.16s;
+	}
+	.loader:before,
+	.loader:after {
+		content: '';
+		position: absolute;
+		top: 0;
+	}
+	.loader:before {
+		left: -3.5em;
+		-webkit-animation-delay: -0.32s;
+		animation-delay: -0.32s;
+	}
+	.loader:after {
+		left: 3.5em;
+	}
+	@-webkit-keyframes load7 {
+		0%,
+		80%,
+		100% {
+			box-shadow: 0 2.5em 0 -1.3em;
+		}
+		40% {
+			box-shadow: 0 2.5em 0 0;
+		}
+	}
+	@keyframes load7 {
+		0%,
+		80%,
+		100% {
+			box-shadow: 0 2.5em 0 -1.3em;
+		}
+		40% {
+			box-shadow: 0 2.5em 0 0;
+		}
+	}

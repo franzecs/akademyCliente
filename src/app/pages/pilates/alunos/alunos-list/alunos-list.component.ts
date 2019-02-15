@@ -33,7 +33,7 @@ export class AlunosListComponent extends PageList implements OnInit {
         this.pages = new Array(responseApi['data']['totalPages'])
         this.totalElements = responseApi['data']['totalElements']
       }, err => {
-        this.openModal(`Falha ao listar!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+        this.openModal(`Falha ao listar!! (${err['error']['message']})`, MsgType.ERROR)
       })
   }
 
@@ -48,7 +48,7 @@ export class AlunosListComponent extends PageList implements OnInit {
         this.openModal(`Aluno deletado com sucesso!`, MsgType.SUCCESS)
         this.getList(this.page, this.count)
       }, err => {
-        this.openModal(`Falha ao deletar!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+        this.openModal(`Falha ao deletar!! (${err['error']['message']})`, MsgType.ERROR)
       })
     }
   }
@@ -61,13 +61,13 @@ export class AlunosListComponent extends PageList implements OnInit {
       this.usuariosService.updateStatus(status, id).pipe(take(1)).subscribe(() => {
         this.getList(this.page, this.count)
       }, err => {
-        this.openModal(`erro ao modificar status: (${err['error']['errors'][0]})`, MsgType.ERROR)
+        this.openModal(`erro ao modificar status: (${err['error']['message']})`, MsgType.ERROR)
       });
     }
   }
 
   baixarPlanilha(){
     var tabela = "<table>" + document.getElementById("tablebx").innerHTML + "</table>";
-    this.shared.salvarPlanilha(tabela,"Alunos");
+    this.shared.saveXls(tabela,"Alunos");
   }
 }

@@ -102,7 +102,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       this.chageCitys()
       this.id = this.formulario.value.id
     }, err => {
-      this.openModal(`Falha ao localizar usuário!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+      this.openModal(`Falha ao localizar usuário!! (${err.error.message})`, MsgType.ERROR)
     })
   }
 
@@ -146,7 +146,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       tipoUser:['Aluno'],
       turmas:[this.turmas],
       empresa: [this.empresaUser],
-      url_perfil:['/assets/img/prod.jpg'],
+      url_perfil:['../../../../../assets/img/prod.webp'],
     })
     this.chageCitys()
   }
@@ -165,7 +165,12 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       this.user.perfis = this.perfis
       this.user.dtr = this.formulario.value.dataNascimento
       this.user.dataNascimento=null
-      this.update(this.user)
+
+      if(this.formulario.value.ativo === "false"){
+        this.user.turmas = []
+      }
+      
+      this.update(this.user)     
     }
   }
 
@@ -177,15 +182,15 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
         this.openModal("Cadastro realizado com sucesso!!", MsgType.SUCCESS)
         this.resetForm()
       }, err => {
-        this.openModal(`Falha ao realizar cadastro!! (${err.error.errors[0]})`, MsgType.ERROR)
+        this.openModal(`Falha ao realizar cadastro!! (${err.error.message})`, MsgType.ERROR)
       })
   }
 
   update(user: User) {
-    this.usuariosService.createOrUpdate(user).pipe(take(1)).subscribe(() => {
-      this.openModal("Dados editados com sucesso!!", MsgType.SUCCESS)
+    this.usuariosService.createOrUpdate(user).pipe(take(1)).subscribe((responseApi: ResponseApi) => {
+      this.openModal("Dados editados com sucesso!!", MsgType.SUCCESS)     
     }, err => {
-      this.openModal(`Falha ao editar!!(${err['error']['errors'][0]})`, MsgType.ERROR)
+      this.openModal(`Falha ao editar!!(${err.error.message})`, MsgType.ERROR)
     })
   }
 
@@ -205,7 +210,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       this.findById(this.id);
       this.openModal("Upload ok", MsgType.SUCCESS)
     }, err => {
-      this.openModal(`Falha no upload!!(${err.error.errors[0]})`, MsgType.ERROR)
+      this.openModal(`Falha no upload!!(${err.error.message})`, MsgType.ERROR)
     })
   }
 
@@ -214,7 +219,7 @@ export class AlunosCreateOrUpdateComponent extends CreateOrUpdate implements OnI
       this.planos = responseApi['data'];
     })
 
-    this.turmaService.findAll().pipe(take(1)).subscribe((responseApi: ResponseApi) =>{
+    this.turmaService.findOnlyTurmas().pipe(take(1)).subscribe((responseApi: ResponseApi) =>{
       this.turmasDB = responseApi['data'];
     })
     this.cepService.getEstadosBr().pipe(take(1)).subscribe(dados => this.estados = dados);

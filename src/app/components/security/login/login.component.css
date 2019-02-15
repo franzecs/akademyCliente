@@ -1,7 +1,9 @@
 .card-login {
     color: white; 
-    background-image: url(../../../../assets/img/bg_verde.jpg);
+    background-image: url(../../../../assets/img/bg_verde2.webp);
     background-repeat: no-repeat;
 	background-size: cover;
     background-position:center;
+    max-width: 300px;
+	margin: 0 auto;
 }

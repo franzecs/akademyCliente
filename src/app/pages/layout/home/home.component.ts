@@ -59,8 +59,9 @@ export class HomeComponent implements OnInit {
       new OpcaoMenu('Instrutores', 'fa fa-users', 'success', '/pilates/instrutores'),
       new OpcaoMenu('Turmas', 'fa fa-table', 'warning', '/pilates/turmas'),
       new OpcaoMenu('Alunos', 'fa fa-address-card', 'primary', '/pilates/alunos'),
-      new OpcaoMenu('Horário', 'fa fa-clock-o', 'default', '/pilates/listturmas'),
-      new OpcaoMenu('Financeiro', 'fa fa-usd', 'danger', '/pilates/financeiro')
+      new OpcaoMenu('Frequencia','fa fa-table', 'info','/pilates/alunos/frequencia'),
+      new OpcaoMenu('Horário', 'fa fa-clock-o', 'success', '/pilates/listturmas'),
+      new OpcaoMenu('Financeiro', 'fa fa-usd', 'danger', '/pilates/financeiro'),
     ]
   }
 

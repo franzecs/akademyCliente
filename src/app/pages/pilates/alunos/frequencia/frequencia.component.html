@@ -1,0 +1,70 @@
+<div class="card">
+
+  <div class="page-top shadow-sm text-center">
+    <strong>Frequência</strong>
+  </div>
+  <div>
+
+    <div class="text-center" style="margin-top: 10px">
+      <button class="btn btn-warning btn-lg fa fa-print sombra-btn" (click)="relatorio()"
+        style="font-size: 15px; margin: 1px" title="imprimir"> Gerar frequência do mês atual</button>
+    </div>
+
+    <!--div class="card-body main" id="tbbx">
+      <table class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Frequência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itensFrequencia">
+            <td>
+              <span class="text-center">
+                <strong><u>{{item.dia}} - {{item.horario}}</u></strong>
+              </span>
+          <tr>
+            <td>Aluno</td>
+            <td>01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>04</td>
+            <td>05</td>
+            <td>06</td>
+            <td>07</td>
+            <td>08</td>
+            <td>09</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+            <td>20</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+          </tr>
+          <tr *ngFor="let aluno of item.alunos">
+            <td>{{aluno.nome}}</td>
+            <td *ngFor="let s of dias" [class.red]="s.sem === item.intDia"></td>
+          </tr>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div-->
+  </div>
+</div>

@@ -24,6 +24,10 @@ export class TurmaService {
     return this.http.get(`${API}/turmas`);
   }
 
+  findOnlyTurmas(){
+    return this.http.get(`${API}/turmas/ltonly`)
+  }
+
   findAllDia(dia:string){
     console.log('service',dia)
     return this.http.get(`${API}/turmas/horario/${dia}`);
@@ -51,5 +55,5 @@ export class TurmaService {
 
   delete(id:string){
     return this.http.delete(`${API}/turmas/${id}`);
-  }
+  }  
 }
