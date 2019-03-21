@@ -17,4 +17,7 @@ export { CartItem } from './models/cart-item'
 export { Turma } from './models/turma.model'
 export { Plano } from './models/plano.model'
 export { Dias } from './models/dias.model'
+export { FluxoCaixa } from './models/fluxoCaixa.model'
+export { ItemFluxoCaixa } from './models/itemFluxoCaixa.model'
+export { Semana } from './models/uteis/semana.model'
 

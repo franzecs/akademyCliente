@@ -82,9 +82,29 @@ label{
 	width: 100%;
 }
 .page-top{
-	font-size: 1.5rem;
+	font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 5px
+	border-radius: 5px;
+	text-align: center;
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+	background-image: linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
+}
+
+.pt-success{
+	background-image: linear-gradient(to bottom, #5bde6d 0%, #2ad232 100%);
+}
+
+.pt-info{
+	background-image: linear-gradient(to bottom, #ded15b 0%, #cfd22a 100%);
+}
+
+.pt-danger{
+	background-image: linear-gradient(to bottom, #de5b5b 0%, #d22a38 100%);
+}
+
+.pt-warning{
+	background-image: linear-gradient(to bottom, #b55bde 0%, #a22ad2 100%);
 }
 
 .container {
@@ -101,7 +121,7 @@ td {
     text-align: justify;
 }
 
-th, tfoot, .page-top, .faixa {
+th, tfoot, .faixa {
 	text-align: center;
 	color: #fff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
@@ -225,6 +245,22 @@ th, tfoot, .page-top, .faixa {
 	margin-top:2px;
 	margin-right: 2px; 
 	padding: 2px;
+}
+
+.btn-pdr{
+	font-size: 14px; 
+	margin: 1px; 
+	margin-right: 2px;
+}
+
+.btn-dwn{
+	background-color: blueviolet !important;
+}
+
+.btn-rlt{
+	background-color: chocolate !important;
+	color: white;
+	font-weight: bold;
 }
 
 .search-bar{

@@ -48,13 +48,15 @@ export class InstrutoresCreateOrUpdateComponent extends CreateOrUpdate implement
       this.user = responseApi.data;
       this.usuariosService.findAlunoByInstrutor(this.user.id).pipe(take(1)).subscribe((responseApi: ResponseApi) => {
         this.alunos = responseApi.data
-        for (let aluno of this.alunos) {
-          this.comissao = this.comissao + aluno.plano.valor
-        }
-
       })
       this.turmaService.findListByInstrutor(this.user.id).subscribe((resposta: ResponseApi) => {
         this.turmas = resposta.data;
+        for(let turma of this.turmas){
+          turma.faturamento = turma.alunos.reduce((total, aluno) => {
+            this.comissao = this.comissao + aluno.plano.valor;
+            return total + aluno.plano.valor;
+          },0);
+        }
       });
       this.cepService.getCidadeNome(this.user.endereco.cidade).subscribe(dados => this.cidades = dados)
       this.userPerfis = Listas._perfil.map(x => {

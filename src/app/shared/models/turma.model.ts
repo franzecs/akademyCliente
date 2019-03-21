@@ -8,6 +8,7 @@ export class Turma{
        public tipo: string,
        public empresa: Empresa,
        public instrutor: User,
-       public alunos?: User[]
+       public alunos?: User[],
+       public faturamento?: number
     ){}
 }

@@ -3,10 +3,10 @@ import { RouterModule } from "@angular/router";
 
 import { PilatesComponent } from "./pilates.component";
 import { AlunosCreateOrUpdateComponent, AlunosListComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent,
-         PlanosListComponent, PlanosCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent} from ".";
-import { ListTurmasComponent } from "./turmas/list-turmas/list-turmas.component";
-import { FluxoCaixaListComponent } from "./financeiro/fluxo-caixa-list/fluxo-caixa-list.component";
-import { FrequenciaComponent } from "./alunos/frequencia/frequencia.component";
+         PlanosListComponent, PlanosCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, 
+         FrequenciaComponent, ListTurmasComponent, FinanceiroComponent, FluxoCaixaListComponent, 
+         FluxoCaixaCreateOrUpdateComponent, DespesasListComponent, DespesasCreateOrUpdateComponent, 
+         ItensCreateOrUpdateComponent} from ".";
 
 const pilatesRoutes = [
     { path:'', component: PilatesComponent,
@@ -30,7 +30,18 @@ const pilatesRoutes = [
             { path:'planos/:id/add', component: PlanosCreateOrUpdateComponent },
             { path:'planos/:id/edit', component: PlanosCreateOrUpdateComponent },
 
-            { path:'financeiro', component: FluxoCaixaListComponent },
+            { path:'financeiro', component: FinanceiroComponent },
+            
+            { path:'financeiro/fluxo', component: FluxoCaixaListComponent },
+            { path:'financeiro/fluxo/:id/add', component: FluxoCaixaCreateOrUpdateComponent },
+            { path:'financeiro/fluxo/:id/edit', component: FluxoCaixaCreateOrUpdateComponent },
+
+            { path:'financeiro/despesas', component: DespesasListComponent },
+            { path:'financeiro/despesas/:id/add', component: DespesasCreateOrUpdateComponent },
+            { path:'financeiro/despesas/:id/edit', component: DespesasCreateOrUpdateComponent },
+
+            { path:'financeiro/itens/:id/:idf/add', component: ItensCreateOrUpdateComponent },
+            { path:'financeiro/itens/:id/:idf/edit', component: ItensCreateOrUpdateComponent },
         ]
     },
 ];

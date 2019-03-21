@@ -17,7 +17,7 @@ export class TurmasCreateOrUpdateComponent extends CreateOrUpdate implements OnI
   turma: Turma;
   instrutores: any;
   alunos: any;
- 
+  
   constructor(
     private turmaService: TurmaService,
     private userService: UserService,

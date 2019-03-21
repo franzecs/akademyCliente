@@ -12,15 +12,14 @@
         <input type="text" class="form-control search-bar" id="nomeAluno" [(ngModel)]="search" (keyup)="ngOnInit()"
           placeholder="Nome Aluno" title="Busca de aluno">
       </div>
-      <div class="col-sm-2" role="group" style="margin-top: -4px;">
-        <a class="componenteform">
-          <button class="btn btn-success btn-xs sombra-btn text-center fa fa-download" type="button" title="baixar dados"
-            (click)="baixarPlanilha()" style="max-height: 30px; max-width: 30px; font-size: 15px;"></button>
+      <a>
+          <button class="btn btn-dwn btn-xs btn-pdr text-center fa fa-download sombra-btn" 
+          type="button" title="Baixar Dados" (click)="baixarPlanilha()"></button>
         </a>
-        <a [routerLink]="['0','add']" class="componenteform">
-          <button class=" btn btn-primary btn-xs sombra-btn fa fa-plus-circle pull-rigth" type="button" style="max-height: 30px; max-width: 30px; font-size: 15px;"></button>
+        <a [routerLink]="['0','add']">
+          <button class=" btn btn-success btn-xs btn-pdr  fa fa-plus-circle pull-rigth sombra-btn" 
+            type="button" title="Novo Aluno"></button>
         </a>
-      </div>
     </div>
   </div>
 
@@ -30,7 +29,7 @@
   <div *ngIf="usuarios !== undefined">
 
     <div class="card-body" id="tbbx">
-      <table class="table table-striped table-bordered" id="tablebx">
+      <table class="table table-striped table-bordered table-sm" id="tablebx">
         <thead>
           <tr>
             <th>Nome</th>

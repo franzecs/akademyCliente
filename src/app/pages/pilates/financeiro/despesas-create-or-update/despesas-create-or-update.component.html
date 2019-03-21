@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="page-top">
+    Detalhes da Despesa
+    <a [routerLink]="['/pilates/financeiro/despesas']">
+      <button class=" btn btn-warning btn-xs btn-pdr fa fa-arrow-circle-left pull-right sombra-btn" 
+      title="Voltar"></button>
+    </a>
+  </div>
+  <div class="card-body">
+
+    <div class="col-xs-12">
+      <form [formGroup]="formulario" (ngSubmit)="onSubmite()" *ngIf="formulario !== undefined">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input id="descricao" type="text" class="form-control" formControlName="descricao" />
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <div class="form-group">
+                <label for="dia">Dia</label>
+                <input id="dia" type="number" class="form-control" formControlName="dia" />
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <div class="form-group">
+                <label for="valor">Valor</label>
+                <input id="valor" type="number" class="form-control" formControlName="valor" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Salvar</button>
+      </form>
+    </div>
+  </div>
+  <modal-message></modal-message>
+</div>

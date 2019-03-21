@@ -16,6 +16,10 @@ import { PlanosListComponent } from './planos/planos-list/planos-list.component'
 import { PlanosCreateOrUpdateComponent } from './planos/planos-create-or-update/planos-create-or-update.component';
 import { ListTurmasComponent } from './turmas/list-turmas/list-turmas.component';
 import { FrequenciaComponent } from './alunos/frequencia/frequencia.component';
+import { FinanceiroComponent } from './financeiro/financeiro.component';
+import { DespesasListComponent } from './financeiro/despesas-list/despesas-list.component';
+import { DespesasCreateOrUpdateComponent } from './financeiro/despesas-create-or-update/despesas-create-or-update.component';
+import { ItensCreateOrUpdateComponent } from './financeiro/itens-create-or-update/itens-create-or-update.component';
 
 @NgModule({
     imports: [
@@ -24,7 +28,11 @@ import { FrequenciaComponent } from './alunos/frequencia/frequencia.component';
       ComponentsModule,
       PilatesRoutingModule
     ],
-    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent, AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent, FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, PlanosListComponent, PlanosCreateOrUpdateComponent, ListTurmasComponent, FrequenciaComponent],
+    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent, 
+                  AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent, 
+                  FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, 
+                  PlanosListComponent, PlanosCreateOrUpdateComponent, ListTurmasComponent, 
+                  FrequenciaComponent, FinanceiroComponent, DespesasListComponent, DespesasCreateOrUpdateComponent, ItensCreateOrUpdateComponent],
     exports: [PilatesComponent]
   
   })

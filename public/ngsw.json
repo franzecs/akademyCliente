@@ -7,16 +7,16 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/0.d769d4080a3f1bdd1748.js",
-        "/1.5540649c452a4e6333f5.js",
-        "/2.23b10a9e6c71de732250.js",
+        "/0.9ae892e70b82abfd0217.js",
+        "/1.9f9d92b210223b4a5352.js",
+        "/2.947cae9ee99c408c6ddc.js",
         "/favicon.ico",
         "/index.html",
-        "/main.5b63c1ef1bb4005e42a6.js",
+        "/main.be13d9d357ba4f5698da.js",
         "/polyfills.eb513217b92b6dc8ac5d.js",
-        "/runtime.a726d8a8bd0605be898d.js",
+        "/runtime.07b22087987580665d26.js",
         "/scripts.4b8b3ffad419d1d6bdb5.js",
-        "/styles.c0e23d84aeb20c687a53.css"
+        "/styles.c5f28ad5cf219338c2c8.css"
       ],
       "patterns": []
     },
@@ -69,13 +69,7 @@
     {
       "name": "dataApi",
       "patterns": [
-        "https:\\/\\/akademyapi\\.herokuapp\\.com\\/.*",
-        "https:\\/\\/akademy-72cc4\\.firebaseapp\\.com\\/alunos\\/.*",
-        "https:\\/\\/akademy-72cc4\\.firebaseapp\\.com\\/planos\\/.*",
-        "https:\\/\\/akademy-72cc4\\.firebaseapp\\.com\\/turmas\\/.*",
-        "https:\\/\\/akademy-72cc4\\.firebaseapp\\.com\\/listturmas\\/.*",
-        "https:\\/\\/akademy-72cc4\\.firebaseapp\\.com\\/instrutores\\/.*",
-        "https:\\/\\/akademy-72cc4\\.firebaseapp\\.com\\/financeiro\\/.*"
+        "https:\\/\\/akademyapi\\.herokuapp\\.com\\/.*"
       ],
       "strategy": "freshness",
       "maxSize": 100,
@@ -84,9 +78,9 @@
     }
   ],
   "hashTable": {
-    "/0.d769d4080a3f1bdd1748.js": "2e01c712ac8e8792d38b71a4313b6c9c0d93e985",
-    "/1.5540649c452a4e6333f5.js": "d8064e8c589dcb517e63096c9b866833db7b2723",
-    "/2.23b10a9e6c71de732250.js": "29b13d740b7a63a66c0464fb1819a47afb7cab34",
+    "/0.9ae892e70b82abfd0217.js": "8beac56fcde539e93e804df312997bcf24320c63",
+    "/1.9f9d92b210223b4a5352.js": "80d468bcabdd0935ece8f5ab6a9219937d18e561",
+    "/2.947cae9ee99c408c6ddc.js": "9863905a3d0b12967cd3331521eb398ed581dea5",
     "/assets/dados/cidades.json": "4e9d6e3bdb69e2355a48836e422b167c96cace2d",
     "/assets/dados/estadosbr.json": "799078e9cb6b6059fcfb3068a9edb7e6ea08fef4",
     "/assets/icon/android-icon-144x144.png": "c1fdcbd2de464b8b14a44ee9363d180e0947c0e2",
@@ -122,12 +116,12 @@
     "/assets/img/prod.webp": "fbfdec4f9a4e4f29de91788305a09712140ecb08",
     "/assets/js/auxiliar.js": "978b1d9c8ad91941bbbf859610dc4b1e0881055d",
     "/favicon.ico": "07e836480615f0a79da77f6d4b0fe9e2c6decf0a",
-    "/index.html": "e1332869a3ba256cf8cb78c5f344c72c734fff97",
-    "/main.5b63c1ef1bb4005e42a6.js": "69deac6d69819fd81d1d4113707438c1a6e99c3d",
+    "/index.html": "ffb8c41ef532585b503997804ccc8bbd9e6ac074",
+    "/main.be13d9d357ba4f5698da.js": "6bcb90167801df460d834fc2a340821cf896968c",
     "/polyfills.eb513217b92b6dc8ac5d.js": "d6eeac26e00f633ef2d0c908eade46c7b6458631",
-    "/runtime.a726d8a8bd0605be898d.js": "d24680d4c41a9a23732e18fe28a29a43e527defa",
+    "/runtime.07b22087987580665d26.js": "e9522b2a1d2f71d6f6391d2629ae6d02ee2c1143",
     "/scripts.4b8b3ffad419d1d6bdb5.js": "3c5a69af4d7699017aed4cf66ec8c88689c82d1f",
-    "/styles.c0e23d84aeb20c687a53.css": "2e6dd1436e7f90c14fbf45145091ab105edf727b"
+    "/styles.c5f28ad5cf219338c2c8.css": "ff673965c430e0574a1332b73cd1dae07d0b9d82"
   },
   "navigationUrls": [
     {

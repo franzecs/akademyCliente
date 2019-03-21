@@ -48,6 +48,10 @@ export class UserService {
     return this.http.get(`${API}/users/search/${tipo}/empresa`)
   }
 
+  findListAlunosAtivos(){
+    return this.http.get(`${API}/users/alunosAtivos`)
+  }
+
   findAlunoByInstrutor(instrutorId: string){
     return this.http.get(`${API}/users/search/${instrutorId}`)
   }

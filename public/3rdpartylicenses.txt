@@ -752,10 +752,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 MIT
 MIT
 
-angularfire2@5.1.1
-MIT
-MIT
-
 @firebase/messaging@0.3.8
 Apache-2.0
 Apache-2.0
+
+angularfire2@5.1.1
+MIT
+MIT

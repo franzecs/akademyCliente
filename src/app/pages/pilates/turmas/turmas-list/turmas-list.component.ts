@@ -3,7 +3,6 @@ import { TurmaService, UserService } from '../../../../services';
 import { PageList, ResponseApi, Turma, User } from '../../../../shared';
 import { take } from 'rxjs/operators';
 import { MsgType } from '../../../../components';
-import { observable, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-turmas-list',
@@ -15,7 +14,7 @@ export class TurmasListComponent extends PageList implements OnInit {
   turmas = [];
   id: string;
   instrutores: any;
-  instrutor: any = "all"
+  instrutor: any = "all" 
 
   constructor(
     private turmaService: TurmaService,
@@ -37,7 +36,7 @@ export class TurmasListComponent extends PageList implements OnInit {
           this.pages = new Array(responseApi['data']['totalPages'])
           this.totalElements = responseApi['data']['totalElements']
         }, err => {
-          this.openModal(`Falha ao listar!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+          this.openModal(`Falha ao listar!! (${err['error']['message']})`, MsgType.ERROR)
         })
     }else{
       this.turmaService.findAllPageByInstrutor(page,count,this.instrutor.id).pipe(take(1))
@@ -46,7 +45,7 @@ export class TurmasListComponent extends PageList implements OnInit {
         this.pages = new Array(responseApi['data']['totalPages'])
         this.totalElements = responseApi['data']['totalElements']
       }, err => {
-        this.openModal(`Falha ao listar!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+        this.openModal(`Falha ao listar!! (${err['error']['message']})`, MsgType.ERROR)
       })
     }
   }
@@ -67,7 +66,7 @@ export class TurmasListComponent extends PageList implements OnInit {
       this.openModal(`Turma deletada com sucesso!`, MsgType.SUCCESS)
       this.getList(this.page, this.count)
     }, err => {
-      this.openModal(`Falha ao deletar!! (${err['error']['errors'][0]})`, MsgType.ERROR)
+      this.openModal(`Falha ao deletar!! (${err['error']['message']})`, MsgType.ERROR)
     })
   }
 

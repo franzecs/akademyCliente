@@ -1,0 +1,69 @@
+<div class="card">
+
+  <div class="page-top shadow-sm">
+    <div class="row">
+      <div class="col-sm-9 text-center">
+        Despesas Cadastrados
+      </div>
+      <div class="col-sm-1">
+        <select class="form-control search-input text-center" id="status" [(ngModel)]="count" (change)="ngOnInit()"
+          title="Registros por página">
+          <option *ngFor="let opt of counts" [ngValue]="opt">{{opt}}</option>
+        </select>
+      </div>
+      <div class="col-sm-1">
+        <a [routerLink]="['/pilates/financeiro']">
+          <button class=" btn btn-warning btn-xs btn-pdr fa fa-arrow-circle-left pull-right sombra-btn" title="voltar"
+            title="Voltar"></button>
+        </a>
+      </div>
+      <div class="col-sm-1">
+        <a [routerLink]="['0','add']">
+          <button class=" btn btn-success btn-pdr btn-xs fa fa-plus-circle pull-right sombra-btn"
+            title="Nova Despesa"></button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="despesas === undefined" class="text-center">
+    <loading-spinner></loading-spinner>
+  </div>
+  <div *ngIf="despesas !== undefined">
+
+    <div class="card-body">
+      <table class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let despesa of despesas">
+            <td class="text-center">{{despesa.descricao}}</td>
+            <td class="text-center">{{despesa.valor | currency: 'BRL'}}</td>
+            <td class="text-center">
+              <a [routerLink]="[despesa.id, 'edit']" class="componenteform">
+                <button class=" btn btn-primary fa fa-pencil sombra-btn" title="Detalhes" data-toggle="tooltip"
+                  data-placement="bottom"></button>
+              </a>
+              <a class="componenteform">
+                <button type="button" class="btn btn-danger fa fa-trash sombra-btn" title="Deletar"
+                  data-placement="bottom" data-target="#modalUtil"
+                  (click)="openModalDelete(despesa.id, despesa.descricao, 'a Despesa')">
+                </button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ikPagination [page]="page" [count]="count" [pages]="pages" [totalElements]="totalElements"
+      (_pageData)="pagination($event)">
+    </ikPagination>
+  </div>
+  <modal-message (onConfirm)="deletar($event)">
+  </modal-message>
+</div>

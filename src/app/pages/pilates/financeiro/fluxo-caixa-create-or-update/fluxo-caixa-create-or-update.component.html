@@ -1,3 +1,116 @@
-<p>
-  fluxo-caixa-create-or-update works!
-</p>
+<div class="card">
+  <div class="page-top">
+    Detalhes do Fluxo de Caixa
+    <a [routerLink]="['/pilates/financeiro/fluxo']">
+      <button class=" btn btn-warning btn-xs btn-pdr fa fa-arrow-circle-left pull-right sombra-btn"
+        title="Voltar"></button>
+    </a>
+    <a>
+      <button class=" btn btn-rlt btn-xs btn-pdr fa fa-print pull-right sombra-btn" (click)="relatorio()"
+        title="Imprimir"></button>
+    </a>
+  </div>
+  <div class="card-body">
+    <div *ngIf="formulario === undefined" class="text-center">
+      <loading-spinner></loading-spinner>
+    </div>
+
+    <div class="col-xs-12">
+      <form [formGroup]="formulario" (ngSubmit)="onSubmite()" *ngIf="formulario !== undefined">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <div class="form-group">
+                <label for="mes" class="control-label">Mês</label>
+                <select class="form-control" id="mes" formControlName="mes">
+                  <option value=1>Janeiro</option>
+                  <option value=2>Fevereiro</option>
+                  <option value=3>Março</option>
+                  <option value=4>Abril</option>
+                  <option value=5>Maio</option>
+                  <option value=6>Junho</option>
+                  <option value=7>Julho</option>
+                  <option value=8>Agosto</option>
+                  <option value=9>Setembro</option>
+                  <option value=10>Outubro</option>
+                  <option value=11>Novembro</option>
+                  <option value=12>Dezembro</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+              <div class="form-group">
+                <label for="ano">Ano</label>
+                <input id="ano" type="number" class="form-control" formControlName="ano" IkMask="9999" />
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+              <div class="form-group">
+                <label for="previsto">Previsto</label>
+                <input id="previsto" type="number" class="form-control" formControlName="previsto"
+                  [attr.disabled]="true" />
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+              <div class="form-group">
+                <label for="executado">Executado</label>
+                <input id="executado" type="number" class="form-control" formControlName="executado"
+                  [attr.disabled]="true" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <hr />
+        <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid"
+          *ngIf="fluxoCaixa.id === null">Salvar</button>
+      </form>
+      <hr />
+    </div>
+    <div>
+      <table class="table table-striped table-bordered table-sm" *ngIf="fluxoCaixa.itens !== undefined">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Dia pagamento</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Opções
+              <a [routerLink]="['/pilates/financeiro/itens',0,fluxoCaixa.id, 'add']" class="componenteform">
+                <button class=" btn btn-success btn-xs btn-pdr fa fa-plus-circle pull-right sombra-btn" title="Detalhes"
+                  data-toggle="tooltip" data-placement="bottom"></button>
+              </a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of fluxoCaixa.itens">
+            <td class="text-center">{{item.descricao}}</td>
+            <td class="text-center">{{item.dia}}</td>
+            <td class="text-center" [class.red]="item.valor < 0">{{item.valor | currency: 'BRL'}}</td>
+            <td class="text-center" [class.red]="item.status === 'PENDENTE'"
+              [class.green]="item.status === 'REALIZADO'">{{item.status}}</td>
+            <td class="text-center">
+              <a [routerLink]="['/pilates/financeiro/itens',item.id,fluxoCaixa.id, 'edit']" class="componenteform">
+                <button class=" btn btn-primary fa fa-pencil sombra-btn" title="Detalhes" data-toggle="tooltip"
+                  data-placement="bottom"></button>
+              </a>
+              <a class="componenteform">
+                <button type="button" class="btn btn-danger fa fa-trash sombra-btn" title="Deletar"
+                  data-placement="bottom" data-target="#modalUtil"
+                  (click)="openModalDelete(item.id, item.descricao, 'o item')">
+                </button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <modal-message (onConfirm)="deletar($event)">
+  </modal-message>
+</div>

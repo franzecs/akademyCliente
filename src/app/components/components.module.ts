@@ -16,6 +16,7 @@ import { LoginComponent } from './security/login/login.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { UploadComponent } from './upload/upload.component';
 import { DiaSemana } from './pipes/diaSemana.pipes'; 
+import { Mes } from './pipes/mes.pipes';
 
 @NgModule({
   imports: [
@@ -25,11 +26,11 @@ import { DiaSemana } from './pipes/diaSemana.pipes';
     FormsModule,
   ],
   providers: [],
-  declarations: [LoadingSpinnerComponent, MenuComponent, UploadComponent, DiaSemana,
+  declarations: [LoadingSpinnerComponent, MenuComponent, UploadComponent, DiaSemana, Mes,
                  LowerDirective, UpperDirective,ModalUtilComponent, ModalMessage, MyPipe, 
                  CheckboxGroupComponent, IkMaskDirective, LoginComponent, PaginationComponent],
-  exports: [LoadingSpinnerComponent, MenuComponent, FormsModule, CheckboxGroupComponent, DiaSemana,
+  exports: [LoadingSpinnerComponent, MenuComponent, FormsModule, CheckboxGroupComponent, DiaSemana, Mes,
               PaginationComponent, UploadComponent, LowerDirective, UpperDirective, 
-              ModalUtilComponent, ModalMessage,MyPipe, IkMaskDirective]
+              ModalUtilComponent, ModalMessage,MyPipe, IkMaskDirective],
 })
 export class ComponentsModule { }

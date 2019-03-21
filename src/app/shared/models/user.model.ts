@@ -1,5 +1,6 @@
 import { Empresa, Endereco, Turma, EmpresaDTO } from "..";
 import { Plano } from "./plano.model";
+import { Semana } from "./uteis/semana.model";
 
 export class User{
     constructor(
@@ -26,6 +27,8 @@ export class User{
         public plano?: Plano,
         public obs?: string,  
         public comissao?: number, 
+        public faturamento?: number,
+        public semana?: Semana,
         public dtr?: string,
     ){}
 }

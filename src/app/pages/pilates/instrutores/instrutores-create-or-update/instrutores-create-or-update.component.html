@@ -2,8 +2,8 @@
   <div class="page-top sombra">
     Cadastro de Instrutores
     <a [routerLink]="['/pilates/instrutores']">
-      <button class=" btn btn-warning btn-xs fa fa-arrow-circle-left pull-right"
-        style="margin-top:2px;margin-right: 2px; padding: 2px;"></button>
+      <button class=" btn btn-warning btn-xs btn-pdr fa fa-arrow-circle-left pull-right sombra-btn"
+        title="Voltar"></button>
     </a>
   </div>
   <div class="card-body">
@@ -64,7 +64,7 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-12 col-md-3">
+                  <div class="col-sm-12 col-md-2">
                     <div class="form-group">
                       <label for="status" class="control-label">Status</label>
                       <select class="form-control" id="status" formControlName="ativo">
@@ -79,7 +79,7 @@
                       <input type="text" class="form-control" formControlName="telefone" IkMask="(99) 9999-9999" />
                     </div>
                   </div>
-                  <div class="col-xs-12 col-md-4">
+                  <div class="col-xs-12 col-md-3">
                     <div class="form-group">
                       <label>Celular</label>
                       <input type="text" class="form-control" formControlName="celular" IkMask="(99) 99999-9999" />
@@ -87,7 +87,13 @@
                   </div>
                   <div class="col-xs-12 col-md-2">
                     <div class="form-group">
-                      <label>%</label>
+                      <label>Pagamento</label>
+                      <input type="text" class="form-control" value="Hora/Aula" disabled=true/>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-2">
+                    <div class="form-group">
+                      <label>Valor</label>
                       <input type="text" class="form-control" formControlName="comissao" />
                     </div>
                   </div>
@@ -208,7 +214,7 @@
               <tr *ngFor="let turma of turmas">
                 <td class="text-center">{{turma.dia | diaSemana}}</td>
                 <td class="text-center">{{turma.horario}}</td>
-                <td class="text-center">{{turma.alunos.length}}</td>
+                <td class="text-center" title="turma.alunos">{{turma.alunos.length}}</td>
               </tr>
             </tbody>
           </table>
@@ -223,27 +229,16 @@
               <tr>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Vr Plano</th>
-                <th>Vr Instrutor</th>
+                <th>Celular</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let aluno of alunos">
                 <td class="text-center">{{aluno.nome}}</td>
                 <td class="text-center">{{aluno.email}}</td>
-                <td class="text-center">{{aluno.plano.valor | currency: 'BRL'}}</td>
-                <td class="text-center">{{aluno.plano.valor*(user.comissao/100) | currency: 'BRL'}}</td>
+                <td class="text-center">{{aluno.celular}}</td>
               </tr>
             </tbody>
-            <tfoot>
-              <tr>
-                <td colspan=2 class="text-center"><strong>Total:</strong></td>
-                <td class="text-center" *ngIf="alunos !== undefined">
-                  <strong>{{comissao ||0 | currency: 'BRL'}}</strong></td>
-                <td class="text-center" *ngIf="alunos !== undefined">
-                  <strong>{{comissao*(user.comissao/100)||0 | currency: 'BRL'}}</strong></td>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>

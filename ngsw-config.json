@@ -33,13 +33,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "https://akademyapi.herokuapp.com/**",
-        "https://akademy-72cc4.firebaseapp.com/alunos/**",
-        "https://akademy-72cc4.firebaseapp.com/planos/**",
-        "https://akademy-72cc4.firebaseapp.com/turmas/**",
-        "https://akademy-72cc4.firebaseapp.com/listturmas/**",
-        "https://akademy-72cc4.firebaseapp.com/instrutores/**",
-        "https://akademy-72cc4.firebaseapp.com/financeiro/**"
+        "https://akademyapi.herokuapp.com/**"
       ],
       "cacheConfig": {
         "maxSize": 100,

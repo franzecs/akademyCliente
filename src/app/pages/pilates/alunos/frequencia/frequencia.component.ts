@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TurmaService, SharedService } from 'src/app/services';
-import { ResponseApi } from 'src/app/shared';
+import { ResponseApi, Semana } from 'src/app/shared';
 import { take } from 'rxjs/operators';
 import { ItemFrequencia } from 'src/app/shared/models/itemFrequencia';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { API } from 'src/app/config/api';
 import { RelatorioService } from 'src/app/services/relatorio.service';
+import { ModalMessage } from 'src/app/components';
 
 @Component({
   selector: 'app-frequencia',
@@ -14,6 +14,8 @@ import { RelatorioService } from 'src/app/services/relatorio.service';
   styleUrls: ['./frequencia.component.css']
 })
 export class FrequenciaComponent implements OnInit {
+
+  @ViewChild(ModalMessage) messageModal: ModalMessage
 
   shared: SharedService;
   mes = new Date().getMonth() + 1;
@@ -64,10 +66,10 @@ export class FrequenciaComponent implements OnInit {
   objFrq: any[] = [];
 
   constructor(
-    private turmaService :  TurmaService,
-    private relatorioService : RelatorioService,
-    private http : HttpClient,
-   ) {
+    private turmaService: TurmaService,
+    private relatorioService: RelatorioService,
+    private http: HttpClient,
+  ) {
     this.shared = SharedService.getInstance();
   }
 
@@ -88,10 +90,16 @@ export class FrequenciaComponent implements OnInit {
   }
 
   relatorio() {
+    this.messageModal.showAlertInfo('Gerando frequencias...');
     this.relatorioService.relFrequencia()
-      .then(relatorio =>{
+      .then(relatorio => {
         const url = window.URL.createObjectURL(relatorio);
         window.open(url);
       })
+      .then(() => this.messageModal.hideMsg())
+  }
+
+  teste() {
+
   }
 }

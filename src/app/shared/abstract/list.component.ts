@@ -11,7 +11,7 @@ export abstract class PageList {
   totalElements: number;
   search: string = '';
 
-  constructor() { }
+  constructor() { } 
 
   pagination(event){
     this.page = event.page

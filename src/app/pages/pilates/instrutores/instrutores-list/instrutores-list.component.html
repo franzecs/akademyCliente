@@ -3,8 +3,8 @@
   <div class="page-top shadow-sm">
     Instrutores Cadastrados
     <a [routerLink]="['0','add']">
-      <button class=" btn btn-primary btn-xs fa fa-plus-circle pull-right" 
-        style="margin-top:2px;margin-right: 2px; padding: 2px;"></button>
+      <button class=" btn btn-success btn-xs btn-pdr fa fa-plus-circle pull-right sombra-btn" 
+        title="Novo Instrutor"></button>
     </a>  
   </div>
   <div *ngIf="usuarios === undefined" class="text-center">
@@ -13,7 +13,7 @@
   <div *ngIf="usuarios !== undefined">
   
   <div class="card-body">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered table-sm">
       <thead>
         <tr>
           <th>Nome</th>

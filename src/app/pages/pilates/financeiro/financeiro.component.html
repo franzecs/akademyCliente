@@ -1,0 +1,82 @@
+<div class="card">
+  <div class="page-top">
+    Resumos Financeiros ({{mes}})
+    <a [routerLink]="['/pilates/financeiro/fluxo']">
+      <button class=" btn btn-success btn-xs btn-pdr fa fa-list-ul pull-right sombra-btn"
+        title="Fluxos de Caixa"></button>
+    </a>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-4 card-flat">
+        <div class="col-12 page-top pt-info">Previsão faturamento</div>
+        <div *ngIf="alunos === undefined" class="text-center">
+          <loading-spinner></loading-spinner>
+        </div>
+        <div class="col-12 card-flat" *ngIf="alunos !== undefined">Alunos ativos:{{alunos.length}}</div>
+        <div class="col-12 card-flat">Faturamento: {{totalAlunos | currency: 'BRL'}} </div>
+        <div class="col-12 page-top pt-info">Total: {{totalAlunos | currency: 'BRL'}}</div>
+      </div>
+      <div class="col-4 card-flat">
+        <div class="page-top pt-danger">
+          Despesas Fixas
+          <a [routerLink]="['/pilates/financeiro/despesas']">
+            <button class=" btn btn-warning btn-xs btn-pdr fa fa-list-alt pull-right sombra-btn"
+              title="Despesas"></button>
+          </a>
+        </div>
+        <br>
+        <span *ngFor="let item of itens">
+          <div *ngIf="itens === undefined" class="text-center">
+            <loading-spinner></loading-spinner>
+          </div>
+
+          <div class="col-12 card-flat">
+            {{item.descricao}}: {{item.valor | currency: 'BRL'}} </div>
+        </span>
+        <div class="page-top pt-danger">Total: {{totalDespesas | currency: 'BRL'}}</div>
+      </div>
+      <div class="col-4 card-flat">
+        <div class="page-top pt-warning">Pagamento Instrutores</div>
+        <span *ngFor="let instrutor of instrutores">
+          <div class="col-12 card-flat">
+            <b>{{instrutor.nome}}</b>
+            <div *ngIf="instrutor.semana !== undefined">
+              <b title="Carga horário semanal">CHS: </b><b>S:</b>{{instrutor.semana.segunda}} - <b>T:</b>{{instrutor.semana.terca}} -
+              <b>Q:</b>{{instrutor.semana.quarta}} - <b>Q:</b>{{instrutor.semana.quinta}} -
+              <b>S:</b>{{instrutor.semana.sexta}} = {{instrutor.semana.total}}
+            </div>
+            <div *ngIf="instrutor.semana !== undefined">
+              <b title="Dias da semana do mês">DSM: </b><b>S:</b>{{semana.segunda}} - <b>T:</b>{{semana.terca}} -
+              <b>Q:</b>{{semana.quarta}} - <b>Q:</b>{{semana.quinta}} -
+              <b>S:</b>{{semana.sexta}}
+            </div>
+            <div *ngIf="instrutor.semana !== undefined">
+              <b title="Valor hora/aula">VHA:</b> {{instrutor.comissao | currency: 'BRL'}}
+            </div>
+            
+            <hr>
+            <div *ngIf="instrutor.faturamento === undefined" class="text-center">
+              <loading-spinner></loading-spinner>
+            </div>
+            <b>{{instrutor.faturamento | currency: 'BRL'}}</b>
+          </div>
+        </span>
+        <div class="page-top pt-warning">Total: {{totalInstrutores | currency: 'BRL'}} </div>
+      </div>
+
+      <div class="col-12">
+        <div class="page-top pt-success">Saldo atual</div>
+        <div class="row">
+          <div class="col-3 card-flat"><b>Faturamento:</b> {{totalAlunos | currency: 'BRL'}}</div>
+          <div class="col-3 card-flat"><b>- Despesas Fixas:</b> {{totalDespesas | currency: 'BRL'}} </div>
+          <div class="col-3 card-flat"><b>- Instrutores:</b> {{totalInstrutores | currency: 'BRL'}}</div>
+          <div class="col-3 card-flat"><b>= Saldo:</b>
+            {{totalAlunos - totalDespesas - totalInstrutores  | currency: 'BRL'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<modal-message>
+</modal-message>
