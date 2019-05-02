@@ -13,7 +13,7 @@ import { FinanceiroService } from './financeiro.service';
 })
 export class FinanceiroComponent implements OnInit {
 
-  @ViewChild(ModalMessage) messageModal: ModalMessage
+  @ViewChild(ModalMessage) messageModal: ModalMessage;
 
   turmas: Turma[] = [];
   alunos: User[];
@@ -25,7 +25,7 @@ export class FinanceiroComponent implements OnInit {
   totalDespesas: number = 0;
   semana: Semana = new Semana(0, 0, 0, 0, 0, 0, 0);
   semanaMes: Semana = new Semana(0, 0, 0, 0, 0, 0, 0);
-  mes: string
+  mes: string;
 
 
   constructor(
@@ -34,9 +34,9 @@ export class FinanceiroComponent implements OnInit {
     private itemFluxoService: ItemFluxoCaixaService,
     private shared: SharedService,
   ) {
-    let data = new Date()
-    this.semanaMes = this.shared.diasSemanaMes(data.getFullYear(), data.getMonth() + 1)
-    this.mes = this.shared.searchNameMonth(data.getMonth() + 1)
+    const data = new Date();
+    this.semanaMes = this.shared.diasSemanaMes(data.getFullYear(), data.getMonth() + 1);
+    this.mes = this.shared.searchNameMonth(data.getMonth() + 1);
   }
 
   ngOnInit() {
@@ -51,9 +51,9 @@ export class FinanceiroComponent implements OnInit {
         this.itens = responseApi;
         this.totalDespesas = this.itens.reduce((total, item) => {
           return total + item.valor;
-        }, 0)
+        }, 0);
       }, erro => { },
-      ()=> FinanceiroService.itens=this.itens)
+        () => FinanceiroService.itens = this.itens);
   }
 
   mensalidades() {
@@ -62,9 +62,9 @@ export class FinanceiroComponent implements OnInit {
         this.alunos = responseApi.data;
         this.totalAlunos = this.alunos.reduce((total, aluno) => {
           return total + aluno.plano.valor;
-        }, 0)
+        }, 0);
       }, erro => { },
-      ()=> FinanceiroService.alunos=this.alunos)
+        () => FinanceiroService.alunos = this.alunos);
   }
 
   pagamentoProfessor() {
@@ -76,34 +76,38 @@ export class FinanceiroComponent implements OnInit {
           this.turmas = resposta.data;
           this.semana = new Semana(0, 0, 0, 0, 0, 0, 0);
           for (let t of this.turmas) {
-            if (t.dia === 'SEGUNDA') {
-              this.semana.segunda = this.semana.segunda + 1;
-            }
-            if (t.dia === 'TERCA') {
-              this.semana.terca = this.semana.terca + 1;
-            }
-            if (t.dia === 'QUARTA') {
-              this.semana.quarta = this.semana.quarta + 1;
-            }
-            if (t.dia === 'QUINTA') {
-              this.semana.quinta = this.semana.quinta + 1;
-            }
-            if (t.dia === 'SEXTA') {
-              this.semana.sexta = this.semana.sexta + 1;
+            if (t.alunos.length > 0) {
+
+              if (t.dia === 'SEGUNDA') {
+                this.semana.segunda = this.semana.segunda + 1;
+              }
+              if (t.dia === 'TERCA') {
+                this.semana.terca = this.semana.terca + 1;
+              }
+              if (t.dia === 'QUARTA') {
+                this.semana.quarta = this.semana.quarta + 1;
+              }
+              if (t.dia === 'QUINTA') {
+                this.semana.quinta = this.semana.quinta + 1;
+              }
+              if (t.dia === 'SEXTA') {
+                this.semana.sexta = this.semana.sexta + 1;
+              }
+
             }
           }
-          this.semana.geraTotal()
-          instrutor.semana = this.semana
-          let remunera = (instrutor.semana.segunda * instrutor.comissao * this.semanaMes.segunda) +
+          this.semana.geraTotal();
+          instrutor.semana = this.semana;
+          const remunera = (instrutor.semana.segunda * instrutor.comissao * this.semanaMes.segunda) +
             (instrutor.semana.terca * instrutor.comissao * this.semanaMes.terca) +
             (instrutor.semana.quarta * instrutor.comissao * this.semanaMes.quarta) +
             (instrutor.semana.quinta * instrutor.comissao * this.semanaMes.quinta) +
-            (instrutor.semana.sexta * instrutor.comissao * this.semanaMes.sexta)
-            instrutor.faturamento = 0;
-          instrutor.faturamento = remunera //instrutor.comissao * this.turmas.length * 4
+            (instrutor.semana.sexta * instrutor.comissao * this.semanaMes.sexta);
+          instrutor.faturamento = 0;
+          instrutor.faturamento = remunera; // instrutor.comissao * this.turmas.length * 4
           this.totalInstrutores = this.totalInstrutores + instrutor.faturamento;
         }, erro => { },
-        ()=> {FinanceiroService.instrutores = this.instrutores})
+          () => { FinanceiroService.instrutores = this.instrutores; });
         /*
         if (instrutor.comissao === 30) { //pagamento por hora aula
           this.turmaService.findListByInstrutor(instrutor.id).subscribe((resposta: ResponseApi) => {
@@ -124,7 +128,7 @@ export class FinanceiroComponent implements OnInit {
         }
         */
       }
-      
-    })
-  }  
+
+    });
+  }
 }

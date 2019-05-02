@@ -5,11 +5,11 @@ import { AuthService } from '../../../services';
   selector: 'app-topo',
   templateUrl: './topo.component.html',
   styleUrls: ['./topo.component.css'],
-  providers:[ ]
+  providers: [ ]
 })
 export class TopoComponent implements OnInit {
 
-  showMenu: boolean = false
+  showMenu = false;
 
   constructor(
     public auth: AuthService
@@ -18,21 +18,21 @@ export class TopoComponent implements OnInit {
   ngOnInit() {
   }
 
-  public sair(){
-    this.auth.logout()
+  public sair() {
+    this.auth.logout();
   }
 
-  controlNav(){
-    if(this.showMenu === false){
-      document.getElementById("mySidenav").style.width = "250px";
-      this.showMenu = true
-      setTimeout(() => { 
-        document.getElementById("mySidenav").style.width = "0" 
-        this.showMenu = false
+  controlNav() {
+    if (this.showMenu === false) {
+      document.getElementById('mySidenav').style.width = '250px';
+      this.showMenu = true;
+      setTimeout(() => {
+        document.getElementById('mySidenav').style.width = '0';
+        this.showMenu = false;
       }, 3000);
-    }else{
-      document.getElementById("mySidenav").style.width = "0";
-      this.showMenu = false
+    } else {
+      document.getElementById('mySidenav').style.width = '0';
+      this.showMenu = false;
     }
   }
 }

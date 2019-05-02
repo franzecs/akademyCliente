@@ -1,9 +1,9 @@
-import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@Angular/forms";
-import { CommonModule } from "@angular/common";
-import { ComponentsModule } from "../../components/components.module";
-import { PilatesComponent } from "./pilates.component";
-import { PilatesRoutingModule } from "./pilates.routing";
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@Angular/forms';
+import { CommonModule } from '@angular/common';
+import { ComponentsModule } from '../../components/components.module';
+import { PilatesComponent } from './pilates.component';
+import { PilatesRoutingModule } from './pilates.routing';
 import { InstrutoresListComponent } from './instrutores/instrutores-list/instrutores-list.component';
 import { InstrutoresCreateOrUpdateComponent } from './instrutores/instrutores-create-or-update/instrutores-create-or-update.component';
 import { AlunosCreateOrUpdateComponent } from './alunos/alunos-create-or-update/alunos-create-or-update.component';
@@ -28,12 +28,11 @@ import { ItensCreateOrUpdateComponent } from './financeiro/itens-create-or-updat
       ComponentsModule,
       PilatesRoutingModule
     ],
-    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent, 
-                  AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent, 
-                  FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent, 
-                  PlanosListComponent, PlanosCreateOrUpdateComponent, ListTurmasComponent, 
-                  FrequenciaComponent, FinanceiroComponent, DespesasListComponent, DespesasCreateOrUpdateComponent, ItensCreateOrUpdateComponent],
+    declarations: [PilatesComponent, InstrutoresListComponent, InstrutoresCreateOrUpdateComponent,
+                  AlunosCreateOrUpdateComponent, AlunosListComponent, FluxoCaixaListComponent,
+                  FluxoCaixaCreateOrUpdateComponent, TurmasCreateOrUpdateComponent, TurmasListComponent,
+                  PlanosListComponent, PlanosCreateOrUpdateComponent, ListTurmasComponent,
+FrequenciaComponent, FinanceiroComponent, DespesasListComponent, DespesasCreateOrUpdateComponent, ItensCreateOrUpdateComponent],
     exports: [PilatesComponent]
-  
   })
   export class PilatesModule { }

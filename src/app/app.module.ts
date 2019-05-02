@@ -2,16 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 
 import { AngularFireModule } from 'angularfire2'
-import { AngularFireStorageModule } from 'angularfire2/storage'
-import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { environment } from '../environments/environment'
 
-//--> para configurar o locale em português
+// --> para configurar o locale em português
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt)
-//<--
+// <--
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@Angular/forms';
@@ -39,7 +39,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production}),
+    //ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production}),
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-Br'},

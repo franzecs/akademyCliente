@@ -47,14 +47,14 @@
               <b>S:</b>{{instrutor.semana.sexta}} = {{instrutor.semana.total}}
             </div>
             <div *ngIf="instrutor.semana !== undefined">
-              <b title="Dias da semana do mês">DSM: </b><b>S:</b>{{semana.segunda}} - <b>T:</b>{{semana.terca}} -
-              <b>Q:</b>{{semana.quarta}} - <b>Q:</b>{{semana.quinta}} -
-              <b>S:</b>{{semana.sexta}}
+              <b title="Dias da semana do mês">DSM: </b><b>S:</b>{{semanaMes.segunda}} - <b>T:</b>{{semanaMes.terca}} -
+              <b>Q:</b>{{semanaMes.quarta}} - <b>Q:</b>{{semanaMes.quinta}} -
+              <b>S:</b>{{semanaMes.sexta}}
             </div>
             <div *ngIf="instrutor.semana !== undefined">
               <b title="Valor hora/aula">VHA:</b> {{instrutor.comissao | currency: 'BRL'}}
             </div>
-            
+
             <hr>
             <div *ngIf="instrutor.faturamento === undefined" class="text-center">
               <loading-spinner></loading-spinner>

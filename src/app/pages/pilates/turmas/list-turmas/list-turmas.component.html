@@ -6,6 +6,7 @@
   </div>
 
   <div class="row" id="my-table-p1">
+
     <div class="col-4">
       <div class="card-flat">
         <div class="text-center" style="background: lightgray">
@@ -20,20 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card-flat">
-        <div class="text-center" style="background: lightgray">
-          <strong>TERÇA</strong>
-        </div>
-        <div *ngFor="let turma of dias.terca">
-          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
-          <div *ngFor="let aluno of turma.alunos">
-            - {{aluno.nome}}
-          </div>
-          <hr />
-        </div>
-      </div>
-    </div>
+
     <div class="col-4">
       <div class="card-flat">
         <div class="text-center" style="background: lightgray">
@@ -48,22 +36,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row" id="my-table-p2">
-    <div class="col-4">
-      <div class="card-flat">
-        <div class="text-center" style="background: lightgray">
-          <strong>QUINTA</strong>
-        </div>
-        <div *ngFor="let turma of dias.quinta">
-          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
-          <div *ngFor="let aluno of turma.alunos">
-            - {{aluno.nome}}
-          </div>
-          <hr />
-        </div>
-      </div>
-    </div>
+
     <div class="col-4">
       <div class="card-flat">
         <div class="text-center" style="background: lightgray">
@@ -78,6 +51,41 @@
         </div>
       </div>
     </div>
+
+  </div>
+
+  <div class="row" id="my-table-p2">
+
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>TERÇA</strong>
+        </div>
+        <div *ngFor="let turma of dias.terca">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
+          <div *ngFor="let aluno of turma.alunos">
+            - {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card-flat">
+        <div class="text-center" style="background: lightgray">
+          <strong>QUINTA</strong>
+        </div>
+        <div *ngFor="let turma of dias.quinta">
+          <strong><u>{{turma.horario}} - {{turma.instrutor.nome}}</u></strong>
+          <div *ngFor="let aluno of turma.alunos">
+            - {{aluno.nome}}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+
     <div class="col-4">
       <div class="card-flat">
         <div class="text-center" style="background: lightgray">
